@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau como Alternativa ao Power BI | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.visualizacao-theme {
+            background: var(--visualizacao-light);
+            border-color: var(--visualizacao);
+        }
+
+        .content-section h2 {
+            color: var(--visualizacao);
+            border-color: var(--visualizacao-light);
+        }
+
+        .back-link:hover {
+            color: var(--visualizacao);
+        }
+
+        .step-list li::before {
+            background: var(--visualizacao);
+        }
+
+        .table-example th {
+            background: var(--visualizacao);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--visualizacao);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#visualizacao" class="back-link">[<] Voltar para Modulo 3 - Visualizacao</a>
+
+                <div class="page-title-section visualizacao-theme">
+                    <h1>Tableau como Alternativa ao Power BI</h1>
+                    <p class="subtitle">Conheca o Tableau, uma das ferramentas de BI mais poderosas do mercado, e
+                        entenda quando usa-lo.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>O que e Tableau?</h2>
+                    <p>Tableau e uma plataforma de Business Intelligence focada em visualizacao de dados. Adquirida pela
+                        Salesforce em 2019, e conhecida por sua capacidade de criar visualizacoes complexas de forma
+                        intuitiva atraves de drag-and-drop.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Pontos Fortes do Tableau</h4>
+                        <ul>
+                            <li>Visualizacoes avancadas e altamente personalizaveis</li>
+                            <li>Melhor para exploracao de dados (analytics)</li>
+                            <li>Comunidade forte com muitos recursos gratuitos</li>
+                            <li>Tableau Public gratuito para portfolios</li>
+                            <li>Preferido por empresas de tecnologia e startups</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Tableau vs Power BI</h2>
+
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Aspecto</th>
+                                <th>Tableau</th>
+                                <th>Power BI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Preco</td>
+                                <td>Mais caro (~$70/usuario/mes)</td>
+                                <td>Mais barato (~$10/usuario/mes)</td>
+                            </tr>
+                            <tr>
+                                <td>Visualizacoes</td>
+                                <td>Mais flexivel e avancado</td>
+                                <td>Bom, mas mais limitado</td>
+                            </tr>
+                            <tr>
+                                <td>ETL</td>
+                                <td>Tableau Prep (separado)</td>
+                                <td>Power Query (integrado)</td>
+                            </tr>
+                            <tr>
+                                <td>Linguagem</td>
+                                <td>Calculated Fields (mais simples)</td>
+                                <td>DAX (mais poderoso)</td>
+                            </tr>
+                            <tr>
+                                <td>Integracao</td>
+                                <td>Melhor com Salesforce</td>
+                                <td>Melhor com Microsoft</td>
+                            </tr>
+                            <tr>
+                                <td>Curva de Aprendizado</td>
+                                <td>Mais intuitivo no inicio</td>
+                                <td>Mais complexo, mas mais recursos</td>
+                            </tr>
+                            <tr>
+                                <td>Mercado Brasil</td>
+                                <td>Menos comum</td>
+                                <td>Mais comum (80%+)</td>
+                            </tr>
+                            <tr>
+                                <td>Versao Gratuita</td>
+                                <td>Tableau Public (publica)</td>
+                                <td>Power BI Desktop (local)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="tip-box">
+                        <h4>[*] Recomendacao de Carreira</h4>
+                        <p>No Brasil, <strong>Power BI</strong> e mais requisitado (maioria das vagas). Porem, conhecer
+                            <strong>Tableau</strong> amplia suas opcoes, especialmente em empresas internacionais e
+                            startups. O ideal e dominar um e conhecer o outro.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Produtos Tableau</h2>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Tableau Desktop</h4>
+                            <p>Aplicacao principal para criar dashboards. Equivalente ao Power BI Desktop.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Tableau Server/Cloud</h4>
+                            <p>Plataforma para publicar e compartilhar. Equivalente ao Power BI Service.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Tableau Prep</h4>
+                            <p>Ferramenta de ETL visual. Equivalente ao Power Query.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Tableau Public</h4>
+                            <p>Versao gratuita mas publica. Otimo para portfolio!</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Conceitos Basicos do Tableau</h2>
+
+                    <h3>Dimensoes vs Medidas</h3>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Dimensoes (Azul)</h4>
+                            <p>Campos categoricos que segmentam os dados. Ex: Produto, Regiao, Data.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Medidas (Verde)</h4>
+                            <p>Campos numericos que sao agregados. Ex: Vendas, Quantidade, Lucro.</p>
+                        </div>
+                    </div>
+
+                    <h3>Shelves (Prateleiras)</h3>
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Shelf</th>
+                                <th>Funcao</th>
+                                <th>Equivalente Power BI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Columns</td>
+                                <td>Define eixo X</td>
+                                <td>Eixo X</td>
+                            </tr>
+                            <tr>
+                                <td>Rows</td>
+                                <td>Define eixo Y</td>
+                                <td>Eixo Y</td>
+                            </tr>
+                            <tr>
+                                <td>Color</td>
+                                <td>Colore por categoria</td>
+                                <td>Legenda</td>
+                            </tr>
+                            <tr>
+                                <td>Size</td>
+                                <td>Dimensiona por valor</td>
+                                <td>Tamanho</td>
+                            </tr>
+                            <tr>
+                                <td>Filters</td>
+                                <td>Filtra dados</td>
+                                <td>Filtros</td>
+                            </tr>
+                            <tr>
+                                <td>Pages</td>
+                                <td>Cria animacao/paginacao</td>
+                                <td>Sem equivalente direto</td>
+                            </tr>
+                            <tr>
+                                <td>Marks</td>
+                                <td>Tipo de visualizacao</td>
+                                <td>Tipo de grafico</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="content-section">
+                    <h2>Calculated Fields</h2>
+                    <p>Equivalente a medidas DAX, mas com sintaxe mais simples:</p>
+
+                    <div class="formula-display">// Calculo basico
+                        [Vendas] - [Custo]
+
+                        // IF/THEN
+                        IF [Lucro] > 0 THEN "Positivo" ELSE "Negativo" END
+
+                        // CASE
+                        CASE [Regiao]
+                        WHEN "Norte" THEN "N"
+                        WHEN "Sul" THEN "S"
+                        ELSE "Outros"
+                        END
+
+                        // Agregacoes
+                        SUM([Vendas])
+                        AVG([Preco])
+                        COUNTD([Cliente ID])
+
+                        // Table Calculations (Window Functions)
+                        RUNNING_SUM(SUM([Vendas]))
+                        RANK_UNIQUE(SUM([Vendas]), 'desc')
+                        ZN(SUM([Vendas])) - LOOKUP(ZN(SUM([Vendas])), -1) // Diferenca vs anterior</div>
+
+                    <div class="tip-box">
+                        <h4>[*] LOD Expressions</h4>
+                        <p>Level of Detail Expressions sao um recurso poderoso e unico do Tableau. Permitem calculos em
+                            diferentes niveis de granularidade.</p>
+                        <div class="formula-display">// Vendas por cliente (independente de filtros)
+                            { FIXED [Cliente ID] : SUM([Vendas]) }
+
+                            // Media de vendas por regiao
+                            { INCLUDE [Regiao] : AVG([Vendas]) }</div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Criando seu Primeiro Dashboard</h2>
+
+                    <ul class="step-list">
+                        <li><strong>Conectar Dados:</strong> Data > Connect to Data Source</li>
+                        <li><strong>Explorar:</strong> Arraste campos para Rows e Columns</li>
+                        <li><strong>Escolher Visualizacao:</strong> Show Me panel ou Marks card</li>
+                        <li><strong>Formatar:</strong> Cores, rotulos, titulos</li>
+                        <li><strong>Criar Sheets:</strong> Uma visualizacao por sheet</li>
+                        <li><strong>Montar Dashboard:</strong> New Dashboard > arraste sheets</li>
+                        <li><strong>Adicionar Interatividade:</strong> Filters, Actions, Highlights</li>
+                        <li><strong>Publicar:</strong> Server > Publish Workbook</li>
+                    </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2>Tableau Public - Portfolio Gratuito</h2>
+                    <p>Tableau Public e a versao gratuita onde voce pode criar e publicar visualizacoes. E excelente
+                        para construir portfolio!</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Vantagens do Tableau Public</h4>
+                        <ul>
+                            <li>100% gratuito para sempre</li>
+                            <li>Publique visualizacoes online</li>
+                            <li>Compartilhe link do seu perfil</li>
+                            <li>Explore visualizacoes de outros usuarios</li>
+                            <li>Recrutadores podem ver seu trabalho</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box warning">
+                        <h4>[!] Limitacoes</h4>
+                        <ul>
+                            <li>Dados ficam publicos (nao use dados sensiveis)</li>
+                            <li>Sem conexao a databases (so arquivos)</li>
+                            <li>Limite de 10 milhoes de linhas</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Recursos de Aprendizado</h2>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Tableau Public Gallery</h4>
+                            <p>Explore milhares de visualizacoes publicas para inspiracao e aprendizado.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Tableau eLearning</h4>
+                            <p>Cursos oficiais gratuitos da Tableau.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Makeover Monday</h4>
+                            <p>Desafio semanal de redesign de visualizacoes.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Viz of the Day</h4>
+                            <p>Visualizacao destacada diariamente pela Tableau.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: Tableau Public</h4>
+                        <p>Crie uma conta no Tableau Public e publique sua primeira visualizacao com dados de exemplo.
+                        </p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: Recriacao</h4>
+                        <p>Recrie um dashboard que voce fez no Power BI usando Tableau. Compare a experiencia.</p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Participe do Makeover Monday: baixe o dataset da semana e crie sua visualizacao em Tableau.
+                        </p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="data-storytelling.html">[<] Anterior: Data Storytelling</a>
+                            <a href="../index.html#visualizacao">Concluir Modulo [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

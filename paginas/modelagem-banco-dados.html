@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelagem de Banco de Dados Relacional | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.coleta-theme {
+            background: var(--coleta-light);
+            border-color: var(--coleta);
+        }
+
+        .content-section h2 {
+            color: var(--coleta);
+            border-color: var(--coleta-light);
+        }
+
+        .back-link:hover {
+            color: var(--coleta);
+        }
+
+        .step-list li::before {
+            background: var(--coleta);
+            color: #111;
+        }
+
+        .table-example th {
+            background: var(--coleta);
+            color: #111;
+        }
+
+        .formula-display {
+            color: var(--coleta);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--coleta);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#coleta" class="back-link">[<] Voltar para Modulo 2 - Coleta</a>
+
+                <div class="page-title-section coleta-theme">
+                    <h1>Modelagem de Banco de Dados Relacional</h1>
+                    <p class="subtitle">Entenda como os dados sao organizados, relacionados e estruturados em bancos de
+                        dados profissionais.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>O que e Modelagem de Dados?</h2>
+                    <p>Modelagem de dados e o processo de criar uma representacao visual e logica de como os dados serao
+                        armazenados e relacionados. Uma boa modelagem garante integridade, performance e facilidade de
+                        consulta.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Por que Entender Modelagem?</h4>
+                        <ul>
+                            <li>Compreender a estrutura dos dados que voce analisa</li>
+                            <li>Escrever queries mais eficientes</li>
+                            <li>Identificar problemas de qualidade de dados</li>
+                            <li>Comunicar melhor com equipes de engenharia</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Conceitos Fundamentais</h2>
+
+                    <h3>Entidades e Atributos</h3>
+                    <p><strong>Entidade:</strong> Objeto do mundo real que queremos armazenar (Cliente, Produto, Venda).
+                    </p>
+                    <p><strong>Atributo:</strong> Caracteristicas da entidade (Nome, Preco, Data).</p>
+
+                    <h3>Tipos de Relacionamentos</h3>
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Descricao</th>
+                                <th>Exemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1:1 (Um para Um)</td>
+                                <td>Cada registro se relaciona com apenas um</td>
+                                <td>Funcionario - CPF</td>
+                            </tr>
+                            <tr>
+                                <td>1:N (Um para Muitos)</td>
+                                <td>Um registro se relaciona com varios</td>
+                                <td>Cliente - Pedidos</td>
+                            </tr>
+                            <tr>
+                                <td>N:N (Muitos para Muitos)</td>
+                                <td>Varios registros se relacionam entre si</td>
+                                <td>Alunos - Cursos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="tip-box">
+                        <h4>[*] Relacionamento N:N</h4>
+                        <p>Relacionamentos muitos-para-muitos sao implementados usando uma <strong>tabela
+                                intermediaria</strong> (tabela de juncao). Ex: aluno_curso com aluno_id e curso_id.</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Chaves e Integridade</h2>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Chave Primaria (PK)</h4>
+                            <p>Identificador unico de cada registro. Nao pode ser nulo ou duplicado.</p>
+                            <div class="formula-display">id INT PRIMARY KEY AUTO_INCREMENT</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Chave Estrangeira (FK)</h4>
+                            <p>Referencia a chave primaria de outra tabela. Cria o relacionamento.</p>
+                            <div class="formula-display">cliente_id INT FOREIGN KEY REFERENCES clientes(id)</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Chave Candidata</h4>
+                            <p>Coluna que poderia ser PK (ex: CPF, Email). Deve ser UNIQUE.</p>
+                            <div class="formula-display">email VARCHAR(100) UNIQUE</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Chave Composta</h4>
+                            <p>PK formada por duas ou mais colunas juntas.</p>
+                            <div class="formula-display">PRIMARY KEY (produto_id, loja_id)</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Normalizacao</h2>
+                    <p>Normalizacao e o processo de organizar dados para reduzir redundancia e melhorar integridade.</p>
+
+                    <ul class="step-list">
+                        <li><strong>1FN (Primeira Forma Normal):</strong> Eliminar grupos repetitivos. Cada celula deve
+                            ter um unico valor atomico.</li>
+                        <li><strong>2FN (Segunda Forma Normal):</strong> Estar em 1FN + todos atributos devem depender
+                            totalmente da chave primaria.</li>
+                        <li><strong>3FN (Terceira Forma Normal):</strong> Estar em 2FN + nenhum atributo pode depender
+                            de outro atributo nao-chave.</li>
+                    </ul>
+
+                    <div class="example-box warning">
+                        <h4>[!] Exemplo de Problema - Dados Nao Normalizados</h4>
+                        <p><strong>Antes:</strong> Tabela Vendas com coluna "produtos" contendo "Produto1, Produto2,
+                            Produto3"</p>
+                        <p><strong>Problema:</strong> Impossivel filtrar, contar ou agregar produtos individualmente</p>
+                        <p><strong>Solucao:</strong> Criar tabela produtos separada e tabela venda_itens para
+                            relacionamento</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Modelos de Dados</h2>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Modelo Conceitual</h4>
+                            <p>Visao de alto nivel focada no negocio. Entidades e relacionamentos sem detalhes tecnicos.
+                            </p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Modelo Logico</h4>
+                            <p>Adiciona atributos, tipos de dados e chaves. Ainda independente do SGBD.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Modelo Fisico</h4>
+                            <p>Implementacao real no banco. Inclui indices, particoes, constraints.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Star Schema vs Snowflake</h2>
+                    <p>Em Data Warehouses, usamos modelos dimensionais otimizados para analise:</p>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Star Schema (Estrela)</h4>
+                            <ul>
+                                <li>Tabela fato central conectada a dimensoes</li>
+                                <li>Dimensoes desnormalizadas</li>
+                                <li>Queries mais simples e rapidas</li>
+                                <li>Mais redundancia de dados</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Snowflake Schema</h4>
+                            <ul>
+                                <li>Dimensoes normalizadas (subdivididas)</li>
+                                <li>Menos redundancia</li>
+                                <li>Queries mais complexas</li>
+                                <li>Economia de espaco</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Componentes do Star Schema</h4>
+                        <p><strong>Tabela Fato:</strong> Contem metricas numericas (fato_vendas: quantidade, valor,
+                            desconto)</p>
+                        <p><strong>Tabelas Dimensao:</strong> Descrevem o contexto (dim_produto, dim_cliente, dim_tempo,
+                            dim_loja)</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: Identificar Relacionamentos</h4>
+                        <p>Desenhe um modelo para: Loja online com Clientes, Produtos, Pedidos, Categorias e Avaliacoes.
+                        </p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: Normalizar Dados</h4>
+                        <p>Normalize esta tabela: Pedido(id, cliente_nome, cliente_email, produto1, preco1, produto2,
+                            preco2)</p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Projete um Star Schema para analise de vendas com dimensoes de tempo, produto, loja e
+                            cliente.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="sql-basico-avancado.html">[<] Anterior: SQL Avancado</a>
+                            <a href="queries-otimizadas.html">Proximo: Queries Otimizadas [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

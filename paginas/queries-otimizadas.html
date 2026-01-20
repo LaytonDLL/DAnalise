@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queries Otimizadas para Grandes Volumes | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.coleta-theme {
+            background: var(--coleta-light);
+            border-color: var(--coleta);
+        }
+
+        .content-section h2 {
+            color: var(--coleta);
+            border-color: var(--coleta-light);
+        }
+
+        .back-link:hover {
+            color: var(--coleta);
+        }
+
+        .step-list li::before {
+            background: var(--coleta);
+            color: #111;
+        }
+
+        .table-example th {
+            background: var(--coleta);
+            color: #111;
+        }
+
+        .formula-display {
+            color: var(--coleta);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--coleta);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#coleta" class="back-link">[<] Voltar para Modulo 2 - Coleta</a>
+
+                <div class="page-title-section coleta-theme">
+                    <h1>Queries Otimizadas para Grandes Volumes</h1>
+                    <p class="subtitle">Aprenda tecnicas de otimizacao para consultas eficientes em milhoes de
+                        registros.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>Por que Otimizacao Importa?</h2>
+                    <p>Em ambientes de producao, uma query mal otimizada pode demorar horas ou ate travar o banco de
+                        dados. Saber escrever queries eficientes e uma habilidade essencial para analistas que trabalham
+                        com grandes volumes.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Beneficios da Otimizacao</h4>
+                        <ul>
+                            <li>Reducao de tempo de execucao de horas para segundos</li>
+                            <li>Menor consumo de recursos do servidor</li>
+                            <li>Dashboards e relatorios mais responsivos</li>
+                            <li>Capacidade de trabalhar com bilhoes de registros</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Entendendo o EXPLAIN</h2>
+                    <p>O comando EXPLAIN mostra como o banco de dados executa sua query, revelando gargalos de
+                        performance.</p>
+
+                    <div class="formula-display">EXPLAIN SELECT * FROM vendas WHERE data >= '2024-01-01';</div>
+
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Termo</th>
+                                <th>Significado</th>
+                                <th>Otimizacao</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Full Table Scan</td>
+                                <td>Le todas as linhas da tabela</td>
+                                <td>Criar indice na coluna filtrada</td>
+                            </tr>
+                            <tr>
+                                <td>Index Scan</td>
+                                <td>Usa indice para buscar dados</td>
+                                <td>Ja esta otimizado</td>
+                            </tr>
+                            <tr>
+                                <td>Nested Loop</td>
+                                <td>Para cada linha de A, percorre B</td>
+                                <td>Verificar indices nos JOINs</td>
+                            </tr>
+                            <tr>
+                                <td>Hash Join</td>
+                                <td>Cria hash table para JOIN</td>
+                                <td>Bom para grandes volumes</td>
+                            </tr>
+                            <tr>
+                                <td>Sort</td>
+                                <td>Ordenacao de resultados</td>
+                                <td>Indice na coluna ORDER BY</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="content-section">
+                    <h2>Indices - O Segredo da Performance</h2>
+                    <p>Indices funcionam como um indice de livro: permitem encontrar dados rapidamente sem ler tudo.</p>
+
+                    <h3>Quando Criar Indices</h3>
+                    <ul class="step-list">
+                        <li>Colunas frequentemente usadas em WHERE</li>
+                        <li>Colunas usadas em JOINs (chaves estrangeiras)</li>
+                        <li>Colunas usadas em ORDER BY</li>
+                        <li>Colunas usadas em GROUP BY</li>
+                    </ul>
+
+                    <h3>Tipos de Indices</h3>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>B-Tree (Padrao)</h4>
+                            <p>Otimo para comparacoes (=, >, <, BETWEEN). Mais comum.</p>
+                                    <div class="formula-display">CREATE INDEX idx_data ON vendas(data);</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Hash Index</h4>
+                            <p>Otimo para igualdade exata (=). Nao funciona com ranges.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Indice Composto</h4>
+                            <p>Varias colunas juntas. Ordem importa!</p>
+                            <div class="formula-display">CREATE INDEX idx_comp ON vendas(regiao, data);</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Covering Index</h4>
+                            <p>Inclui todas colunas necessarias, evitando acesso a tabela.</p>
+                        </div>
+                    </div>
+
+                    <div class="example-box warning">
+                        <h4>[!] Cuidado com Indices</h4>
+                        <p>Indices aceleram leitura mas <strong>desaceleram escrita</strong> (INSERT, UPDATE, DELETE).
+                            Nao crie indices desnecessarios! Cada indice ocupa espaco e precisa ser atualizado.</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Boas Praticas de Performance</h2>
+
+                    <h3>1. Selecione Apenas o Necessario</h3>
+                    <div class="formula-display">-- RUIM: Traz todas as colunas
+                        SELECT * FROM vendas;
+
+                        -- BOM: Apenas colunas necessarias
+                        SELECT id, data, valor FROM vendas;</div>
+
+                    <h3>2. Evite Funcoes em Colunas Filtradas</h3>
+                    <div class="formula-display">-- RUIM: Funcao impede uso de indice
+                        WHERE YEAR(data) = 2024
+
+                        -- BOM: Preserva uso do indice
+                        WHERE data >= '2024-01-01' AND data < '2025-01-01' </div>
+
+                            <h3>3. Use EXISTS ao inves de IN para Subqueries</h3>
+                            <div class="formula-display">-- RUIM para grandes volumes
+                                WHERE cliente_id IN (SELECT id FROM clientes WHERE ativo = 1)
+
+                                -- BOM: Para logo que encontra match
+                                WHERE EXISTS (SELECT 1 FROM clientes c WHERE c.id = v.cliente_id AND c.ativo = 1)</div>
+
+                            <h3>4. Limite Resultados Durante Desenvolvimento</h3>
+                            <div class="formula-display">SELECT * FROM vendas_gigante LIMIT 1000; -- Testa antes de
+                                rodar sem limite</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Particoes de Tabelas</h2>
+                    <p>Particionar divide uma tabela grande em partes menores, permitindo que queries acessem apenas as
+                        particoes necessarias.</p>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Particao por Range</h4>
+                            <p>Divide por faixas de valores (ex: por ano/mes).</p>
+                            <div class="formula-display">PARTITION BY RANGE (YEAR(data))</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Particao por Lista</h4>
+                            <p>Divide por valores especificos (ex: por regiao).</p>
+                            <div class="formula-display">PARTITION BY LIST (regiao)</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Particao por Hash</h4>
+                            <p>Distribui uniformemente entre N particoes.</p>
+                            <div class="formula-display">PARTITION BY HASH (id) PARTITIONS 4</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Tecnicas Avancadas</h2>
+
+                    <div class="example-box">
+                        <h4>Materialized Views</h4>
+                        <p>Pre-calcula e armazena resultados de queries complexas. Ideal para dashboards.</p>
+                        <div class="formula-display">CREATE MATERIALIZED VIEW vendas_resumo AS
+                            SELECT regiao, mes, SUM(valor) as total
+                            FROM vendas
+                            GROUP BY regiao, mes;</div>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Query Hints</h4>
+                        <p>Instrucoes para o otimizador do banco de dados.</p>
+                        <div class="formula-display">SELECT /*+ INDEX(vendas idx_data) */ * FROM vendas WHERE data =
+                            '2024-01-01';</div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: Analise EXPLAIN</h4>
+                        <p>Execute EXPLAIN em uma query lenta e identifique o gargalo (Table Scan, Sort, etc.).</p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: Criar Indice</h4>
+                        <p>Identifique colunas que precisam de indice em uma tabela de vendas com 1 milhao de registros.
+                        </p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Otimize uma query que demora 30 segundos para menos de 1 segundo usando as tecnicas
+                            aprendidas.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="modelagem-banco-dados.html">[<] Anterior: Modelagem</a>
+                            <a href="sql-python-bi.html">Proximo: SQL com Python e BI [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

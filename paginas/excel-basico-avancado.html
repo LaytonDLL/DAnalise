@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel do Basico ao Avancado | DAnalise</title>
+    <meta name="description"
+        content="Aprenda Excel completo: PROCV, INDICE+CORRESP, Tabelas Dinamicas, Graficos e muito mais.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+
+    <main class="content-page">
+        <a href="../index.html#fundacao" class="back-link">
+            <span>[<]< /span> Voltar para Modulo 1 - Fundacao
+        </a>
+
+        <div class="page-title-section fundacao-theme">
+            <h1>Dominar Excel do Basico ao Avancado</h1>
+            <p class="subtitle">Aprenda PROCV, INDICE+CORRESP, Tabelas Dinamicas, Graficos Profissionais e todas as
+                funcionalidades essenciais para analise de dados.</p>
+        </div>
+
+        <!-- SEÇÃO 1: INTRODUÇÃO -->
+        <section class="content-section">
+            <h2>Por que Excel e Essencial?</h2>
+            <p>O Microsoft Excel e a ferramenta de analise de dados mais utilizada no mundo corporativo. Segundo
+                pesquisas, mais de 90% das empresas utilizam Excel em seus processos diarios. Dominar esta ferramenta e
+                o primeiro passo fundamental para qualquer analista de dados.</p>
+
+            <p>O Excel permite manipular grandes volumes de dados, realizar calculos complexos, criar visualizacoes
+                impactantes e automatizar tarefas repetitivas. Nesta secao, voce vai aprender desde o basico ate
+                tecnicas avancadas que vao diferenciar voce no mercado.</p>
+
+            <div class="example-box success">
+                <h4>[+] Beneficios de Dominar Excel</h4>
+                <ul>
+                    <li>Aumento de produtividade em ate 40% nas tarefas diarias</li>
+                    <li>Capacidade de tomar decisoes baseadas em dados</li>
+                    <li>Requisito obrigatorio em 95% das vagas de analista</li>
+                    <li>Base para aprender ferramentas mais avancadas como Power BI</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: PROCV -->
+        <section class="content-section">
+            <h2>PROCV - A Funcao Mais Importante</h2>
+            <p>A funcao PROCV (VLOOKUP em ingles) e utilizada para buscar um valor em uma tabela e retornar um valor
+                correspondente de outra coluna. E a funcao mais utilizada em analise de dados e e essencial domina-la.
+            </p>
+
+            <h3>Sintaxe do PROCV</h3>
+            <div class="formula-display">
+                =PROCV(valor_procurado; matriz_tabela; num_indice_coluna; [procurar_intervalo])
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h4>Parametros</h4>
+                    <ul>
+                        <li><strong>valor_procurado:</strong> O valor que voce quer encontrar</li>
+                        <li><strong>matriz_tabela:</strong> A tabela onde sera feita a busca</li>
+                        <li><strong>num_indice_coluna:</strong> Numero da coluna com o valor de retorno</li>
+                        <li><strong>procurar_intervalo:</strong> FALSO para correspondencia exata</li>
+                    </ul>
+                </div>
+                <div class="comparison-card">
+                    <h4>Dicas Importantes</h4>
+                    <ul>
+                        <li>Sempre use FALSO no ultimo argumento</li>
+                        <li>A coluna de busca deve ser a primeira</li>
+                        <li>Use $ para referencias absolutas</li>
+                        <li>Combine com SEERRO para tratar erros</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Exemplo Pratico: Busca de Precos</h3>
+            <p>Imagine que voce tem uma tabela de produtos e precisa buscar o preco de um produto especifico:</p>
+
+            <table class="table-example">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Produto</th>
+                        <th>Preco</th>
+                        <th>Estoque</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>P001</td>
+                        <td>Notebook Dell</td>
+                        <td>R$ 4.500,00</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>P002</td>
+                        <td>Mouse Logitech</td>
+                        <td>R$ 150,00</td>
+                        <td>120</td>
+                    </tr>
+                    <tr>
+                        <td>P003</td>
+                        <td>Teclado Mecanico</td>
+                        <td>R$ 350,00</td>
+                        <td>45</td>
+                    </tr>
+                    <tr>
+                        <td>P004</td>
+                        <td>Monitor 27"</td>
+                        <td>R$ 1.800,00</td>
+                        <td>18</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Para buscar o preco do produto "P002":</p>
+            <div class="formula-display">
+                =PROCV("P002"; A2:D5; 3; FALSO)
+            </div>
+            <p><strong>Resultado:</strong> R$ 150,00</p>
+
+            <div class="tip-box">
+                <h4>[*] Dica Pro</h4>
+                <p>Combine PROCV com SEERRO para evitar erros #N/D quando o valor nao for encontrado:</p>
+                <div class="formula-display">
+                    =SEERRO(PROCV("P005"; A2:D5; 3; FALSO); "Produto nao encontrado")
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: INDICE + CORRESP -->
+        <section class="content-section">
+            <h2>INDICE + CORRESP - A Dupla Poderosa</h2>
+            <p>A combinacao INDICE + CORRESP e mais flexivel que o PROCV e e preferida por analistas avancados. Esta
+                combinacao permite buscas em qualquer direcao e oferece melhor performance em grandes volumes de dados.
+            </p>
+
+            <h3>Por que usar INDICE + CORRESP?</h3>
+            <ul class="step-list">
+                <li>Permite buscar valores a esquerda (PROCV so busca a direita)</li>
+                <li>Melhor performance em planilhas grandes</li>
+                <li>Mais flexivel para adicionar/remover colunas</li>
+                <li>Permite buscas bidimensionais (linha e coluna)</li>
+            </ul>
+
+            <h3>Sintaxe</h3>
+            <div class="formula-display">
+                =INDICE(matriz_retorno; CORRESP(valor_procurado; matriz_busca; tipo_correspondencia))
+            </div>
+
+            <h3>Exemplo Pratico</h3>
+            <p>Usando a mesma tabela anterior, para buscar o nome do produto pelo codigo:</p>
+            <div class="formula-display">
+                =INDICE(B2:B5; CORRESP("P003"; A2:A5; 0))
+            </div>
+            <p><strong>Resultado:</strong> Teclado Mecanico</p>
+
+            <div class="example-box">
+                <h4>Comparacao: PROCV vs INDICE+CORRESP</h4>
+                <table class="table-example">
+                    <thead>
+                        <tr>
+                            <th>Caracteristica</th>
+                            <th>PROCV</th>
+                            <th>INDICE+CORRESP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Direcao da busca</td>
+                            <td>Somente direita</td>
+                            <td>Qualquer direcao</td>
+                        </tr>
+                        <tr>
+                            <td>Performance</td>
+                            <td>Boa</td>
+                            <td>Excelente</td>
+                        </tr>
+                        <tr>
+                            <td>Flexibilidade</td>
+                            <td>Limitada</td>
+                            <td>Alta</td>
+                        </tr>
+                        <tr>
+                            <td>Facilidade de uso</td>
+                            <td>Mais facil</td>
+                            <td>Requer pratica</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: TABELAS DINÂMICAS -->
+        <section class="content-section">
+            <h2>Tabelas Dinamicas - Analise Poderosa</h2>
+            <p>Tabelas Dinamicas sao uma das funcionalidades mais poderosas do Excel. Elas permitem resumir, analisar,
+                explorar e apresentar grandes volumes de dados de forma interativa e rapida.</p>
+
+            <h3>Quando Usar Tabelas Dinamicas?</h3>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h4>Cenarios Ideais</h4>
+                    <ul>
+                        <li>Resumir vendas por regiao/periodo</li>
+                        <li>Calcular medias e totais automaticamente</li>
+                        <li>Comparar desempenho entre categorias</li>
+                        <li>Criar relatorios executivos rapidamente</li>
+                    </ul>
+                </div>
+                <div class="comparison-card">
+                    <h4>Vantagens</h4>
+                    <ul>
+                        <li>Nao precisa de formulas complexas</li>
+                        <li>Atualizacao automatica dos dados</li>
+                        <li>Interface de arrastar e soltar</li>
+                        <li>Filtragem e segmentacao facil</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Como Criar uma Tabela Dinamica</h3>
+            <ul class="step-list">
+                <li>Selecione seus dados (incluindo cabecalhos)</li>
+                <li>Va em Inserir > Tabela Dinamica</li>
+                <li>Escolha onde quer criar a tabela (nova planilha recomendado)</li>
+                <li>Arraste os campos para Linhas, Colunas, Valores e Filtros</li>
+                <li>Configure as opcoes de calculo (soma, media, contagem, etc.)</li>
+            </ul>
+
+            <h3>Exemplo: Analise de Vendas</h3>
+            <p>Imagine uma base de dados de vendas com milhares de registros. Com uma Tabela Dinamica, voce pode
+                facilmente:</p>
+
+            <table class="table-example">
+                <thead>
+                    <tr>
+                        <th>Regiao</th>
+                        <th>Jan</th>
+                        <th>Fev</th>
+                        <th>Mar</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Norte</td>
+                        <td>R$ 45.000</td>
+                        <td>R$ 52.000</td>
+                        <td>R$ 48.000</td>
+                        <td>R$ 145.000</td>
+                    </tr>
+                    <tr>
+                        <td>Sul</td>
+                        <td>R$ 62.000</td>
+                        <td>R$ 58.000</td>
+                        <td>R$ 71.000</td>
+                        <td>R$ 191.000</td>
+                    </tr>
+                    <tr>
+                        <td>Sudeste</td>
+                        <td>R$ 95.000</td>
+                        <td>R$ 102.000</td>
+                        <td>R$ 98.000</td>
+                        <td>R$ 295.000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total Geral</strong></td>
+                        <td><strong>R$ 202.000</strong></td>
+                        <td><strong>R$ 212.000</strong></td>
+                        <td><strong>R$ 217.000</strong></td>
+                        <td><strong>R$ 631.000</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip-box">
+                <h4>[*] Dicas para Tabelas Dinamicas</h4>
+                <ul>
+                    <li>Sempre formate seus dados como Tabela (Ctrl+T) antes de criar a TD</li>
+                    <li>Use Segmentacao de Dados para filtros visuais interativos</li>
+                    <li>Atualize a TD apos modificar dados (clique direito > Atualizar)</li>
+                    <li>Explore os diferentes tipos de calculo em Configuracoes de Campo de Valor</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: OUTRAS FUNÇÕES ESSENCIAIS -->
+        <section class="content-section">
+            <h2>Outras Funcoes Essenciais</h2>
+
+            <h3>SOMASE e SOMASES</h3>
+            <p>Soma valores que atendem a um ou mais criterios:</p>
+            <div class="formula-display">
+                =SOMASE(intervalo_criterio; criterio; intervalo_soma)
+                =SOMASES(intervalo_soma; intervalo_criterio1; criterio1; intervalo_criterio2; criterio2)
+            </div>
+
+            <h3>CONT.SE e CONT.SES</h3>
+            <p>Conta celulas que atendem a um ou mais criterios:</p>
+            <div class="formula-display">
+                =CONT.SE(intervalo; criterio)
+                =CONT.SES(intervalo_criterio1; criterio1; intervalo_criterio2; criterio2)
+            </div>
+
+            <h3>SE Aninhado e SES</h3>
+            <p>Testes logicos com multiplas condicoes:</p>
+            <div class="formula-display">
+                =SE(condicao1; resultado1; SE(condicao2; resultado2; resultado_padrao))
+                =SES(condicao1; resultado1; condicao2; resultado2; VERDADEIRO; resultado_padrao)
+            </div>
+
+            <h3>Funcoes de Texto</h3>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h4>CONCATENAR / CONCAT</h4>
+                    <div class="formula-display">=CONCAT(A1; " "; B1)</div>
+                    <p>Une textos de diferentes celulas</p>
+                </div>
+                <div class="comparison-card">
+                    <h4>ESQUERDA / DIREITA</h4>
+                    <div class="formula-display">=ESQUERDA(A1; 3)</div>
+                    <p>Extrai caracteres do texto</p>
+                </div>
+                <div class="comparison-card">
+                    <h4>EXT.TEXTO</h4>
+                    <div class="formula-display">=EXT.TEXTO(A1; 3; 5)</div>
+                    <p>Extrai parte do meio do texto</p>
+                </div>
+                <div class="comparison-card">
+                    <h4>SUBSTITUIR</h4>
+                    <div class="formula-display">=SUBSTITUIR(A1; "antigo"; "novo")</div>
+                    <p>Troca partes do texto</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: EXERCÍCIOS PRÁTICOS -->
+        <section class="content-section">
+            <h2>Exercicios Praticos</h2>
+
+            <div class="example-box">
+                <h4>Exercicio 1: PROCV</h4>
+                <p>Crie uma planilha com uma tabela de funcionarios (ID, Nome, Departamento, Salario). Em outra area,
+                    crie um campo de busca que retorne o salario do funcionario ao digitar o ID.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Exercicio 2: Tabela Dinamica</h4>
+                <p>Importe dados de vendas e crie uma Tabela Dinamica que mostre o total de vendas por categoria de
+                    produto e por mes. Adicione um grafico dinamico.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Exercicio 3: Formulas Combinadas</h4>
+                <p>Use SOMASES para calcular o total de vendas de um vendedor especifico em um determinado mes. Combine
+                    com SEERRO para tratar casos sem dados.</p>
+            </div>
+
+            <div class="example-box success">
+                <h4>Desafio Final</h4>
+                <p>Crie um dashboard completo usando Tabelas Dinamicas, Graficos, PROCV e Formatacao Condicional para
+                    analisar dados de vendas de uma empresa ficticia.</p>
+            </div>
+        </section>
+
+        <!-- Navegação inferior -->
+        <nav class="nav-bottom">
+            <a href="../index.html#fundacao">
+                <span>[<]< /span> Voltar ao Modulo
+            </a>
+            <a href="estatistica-descritiva.html">
+                Proximo: Estatistica Descritiva <span>[>]</span>
+            </a>
+        </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

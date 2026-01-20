@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatistica Descritiva e Inferencial | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#fundacao" class="back-link">[<] Voltar para Modulo 1 - Fundacao</a>
+
+                <div class="page-title-section fundacao-theme">
+                    <h1>Estatistica Descritiva e suas Aplicacoes</h1>
+                    <p class="subtitle">Aprenda a interpretar dados atraves de medidas de tendencia central, dispersao e
+                        correlacao.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>O que e Estatistica Descritiva?</h2>
+                    <p>Estatistica Descritiva e o ramo da estatistica que descreve e resume conjuntos de dados,
+                        transformando dados brutos em informacoes uteis para tomada de decisao.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Por que e Importante?</h4>
+                        <ul>
+                            <li>Permite entender rapidamente grandes volumes de dados</li>
+                            <li>Identifica padroes e tendencias</li>
+                            <li>Detecta valores atipicos (outliers)</li>
+                            <li>Base para analises estatisticas avancadas</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Medidas de Tendencia Central</h2>
+
+                    <h3>Media Aritmetica</h3>
+                    <p>A media e a soma de todos os valores dividida pela quantidade de valores.</p>
+                    <div class="formula-display">Media = (x1 + x2 + ... + xn) / n</div>
+                    <p><strong>Exemplo:</strong> Notas: 7, 8, 6, 9, 10 â†’ Media = 40/5 = <strong>8</strong></p>
+                    <div class="formula-display">=MEDIA(A1:A5)</div>
+
+                    <div class="example-box warning">
+                        <h4>[!] Cuidado com Outliers</h4>
+                        <p>A media e sensivel a valores extremos. Um valor muito alto ou baixo pode distorcer o
+                            resultado.</p>
+                    </div>
+
+                    <h3>Mediana</h3>
+                    <p>E o valor central de um conjunto ordenado. Divide os dados ao meio: 50% abaixo e 50% acima.</p>
+                    <p><strong>Exemplo:</strong> Dados ordenados: 1, 3, <strong>5</strong>, 7, 9 â†’ Mediana = 5</p>
+                    <div class="formula-display">=MED(A1:A5)</div>
+
+                    <h3>Moda</h3>
+                    <p>E o valor que mais se repete no conjunto de dados.</p>
+                    <p><strong>Exemplo:</strong> Tamanhos vendidos: P, M, G, M, M, G, M â†’ Moda = <strong>M</strong>
+                    </p>
+                    <div class="formula-display">=MODO.UNICO(A1:A10)</div>
+
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Medida</th>
+                                <th>Quando usar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Media</td>
+                                <td>Dados simetricos, sem outliers</td>
+                            </tr>
+                            <tr>
+                                <td>Mediana</td>
+                                <td>Dados com outliers ou assimetricos</td>
+                            </tr>
+                            <tr>
+                                <td>Moda</td>
+                                <td>Dados categoricos ou discretos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="content-section">
+                    <h2>Medidas de Dispersao</h2>
+
+                    <h3>Amplitude</h3>
+                    <div class="formula-display">Amplitude = Valor Maximo - Valor Minimo</div>
+
+                    <h3>Variancia</h3>
+                    <p>Mede a media dos quadrados das diferencas entre cada valor e a media.</p>
+                    <div class="formula-display">=VAR.A(A1:A10) // Para amostra</div>
+
+                    <h3>Desvio Padrao</h3>
+                    <p>E a raiz quadrada da variancia. Indica o quanto os dados se afastam da media, na mesma unidade
+                        dos dados.</p>
+                    <div class="formula-display">=DESVPAD.A(A1:A10) // Para amostra</div>
+
+                    <div class="example-box">
+                        <h4>Exemplo Pratico</h4>
+                        <p><strong>Loja A:</strong> Vendas: 100, 102, 98, 101, 99 â†’ Desvio: 1.58 (consistente)</p>
+                        <p><strong>Loja B:</strong> Vendas: 80, 120, 60, 140, 100 â†’ Desvio: 28.28 (variavel)</p>
+                    </div>
+
+                    <h3>Coeficiente de Variacao (CV)</h3>
+                    <div class="formula-display">CV = (Desvio Padrao / Media) x 100%</div>
+                    <p>CV < 15%: baixa dispersao | 15-30%: media |> 30%: alta dispersao</p>
+                </section>
+
+                <section class="content-section">
+                    <h2>Correlacao</h2>
+                    <p>Mede a forca e direcao da relacao linear entre duas variaveis. Varia de -1 a +1.</p>
+
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Valor de r</th>
+                                <th>Interpretacao</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>+0.7 a +1.0</td>
+                                <td>Correlacao positiva forte</td>
+                            </tr>
+                            <tr>
+                                <td>+0.4 a +0.69</td>
+                                <td>Correlacao positiva moderada</td>
+                            </tr>
+                            <tr>
+                                <td>-0.39 a +0.39</td>
+                                <td>Correlacao fraca ou inexistente</td>
+                            </tr>
+                            <tr>
+                                <td>-0.7 a -0.4</td>
+                                <td>Correlacao negativa moderada</td>
+                            </tr>
+                            <tr>
+                                <td>-1.0 a -0.7</td>
+                                <td>Correlacao negativa forte</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="formula-display">=CORREL(intervalo_x; intervalo_y)</div>
+
+                    <div class="tip-box">
+                        <h4>[*] Importante</h4>
+                        <p>Correlacao NAO significa causalidade! Duas variaveis podem estar correlacionadas sem que uma
+                            cause a outra.</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Funcoes Estatisticas no Excel</h2>
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Medida</th>
+                                <th>Funcao</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Media</td>
+                                <td>=MEDIA()</td>
+                            </tr>
+                            <tr>
+                                <td>Mediana</td>
+                                <td>=MED()</td>
+                            </tr>
+                            <tr>
+                                <td>Moda</td>
+                                <td>=MODO.UNICO()</td>
+                            </tr>
+                            <tr>
+                                <td>Maximo</td>
+                                <td>=MAXIMO()</td>
+                            </tr>
+                            <tr>
+                                <td>Minimo</td>
+                                <td>=MINIMO()</td>
+                            </tr>
+                            <tr>
+                                <td>Desvio Padrao</td>
+                                <td>=DESVPAD.A()</td>
+                            </tr>
+                            <tr>
+                                <td>Variancia</td>
+                                <td>=VAR.A()</td>
+                            </tr>
+                            <tr>
+                                <td>Correlacao</td>
+                                <td>=CORREL()</td>
+                            </tr>
+                            <tr>
+                                <td>Percentil</td>
+                                <td>=PERCENTIL()</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1</h4>
+                        <p>Vendas diarias: 45, 52, 38, 61, 52, 47, 52, 55. Calcule media, mediana e moda.</p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2</h4>
+                        <p>Compare dispersao: Equipe A (100, 105, 98) vs Equipe B (85, 120, 95). Qual e mais
+                            consistente?</p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Crie um relatorio estatistico completo usando dados reais de vendas ou RH.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="excel-basico-avancado.html">[<] Anterior: Excel Avancado</a>
+                            <a href="matematica-financeira.html">Proximo: Matematica Financeira [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

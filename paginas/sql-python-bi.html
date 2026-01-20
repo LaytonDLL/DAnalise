@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectar SQL com Python e BI | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.coleta-theme {
+            background: var(--coleta-light);
+            border-color: var(--coleta);
+        }
+
+        .content-section h2 {
+            color: var(--coleta);
+            border-color: var(--coleta-light);
+        }
+
+        .back-link:hover {
+            color: var(--coleta);
+        }
+
+        .step-list li::before {
+            background: var(--coleta);
+            color: #111;
+        }
+
+        .table-example th {
+            background: var(--coleta);
+            color: #111;
+        }
+
+        .formula-display {
+            color: var(--coleta);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--coleta);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#coleta" class="back-link">[<] Voltar para Modulo 2 - Coleta</a>
+
+                <div class="page-title-section coleta-theme">
+                    <h1>Conectar SQL com Python e Ferramentas de BI</h1>
+                    <p class="subtitle">Aprenda a integrar bancos de dados com Python, Power BI, Tableau e outras
+                        ferramentas de analise.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>Por que Conectar SQL a Outras Ferramentas?</h2>
+                    <p>Dados armazenados em bancos precisam ser extraidos, transformados e visualizados. Conectar SQL
+                        com Python permite automacao, machine learning e analises complexas. Conectar com ferramentas de
+                        BI permite criar dashboards interativos.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Vantagens da Integracao</h4>
+                        <ul>
+                            <li>Automatizar coleta e processamento de dados</li>
+                            <li>Criar pipelines de dados robustos</li>
+                            <li>Alimentar dashboards em tempo real</li>
+                            <li>Combinar dados de multiplas fontes</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>SQL com Python</h2>
+
+                    <h3>Bibliotecas Principais</h3>
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Biblioteca</th>
+                                <th>Uso</th>
+                                <th>Banco de Dados</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>sqlite3</td>
+                                <td>SQLite (ja vem no Python)</td>
+                                <td>SQLite</td>
+                            </tr>
+                            <tr>
+                                <td>psycopg2</td>
+                                <td>Conexao com PostgreSQL</td>
+                                <td>PostgreSQL</td>
+                            </tr>
+                            <tr>
+                                <td>mysql-connector</td>
+                                <td>Conexao com MySQL</td>
+                                <td>MySQL</td>
+                            </tr>
+                            <tr>
+                                <td>pyodbc</td>
+                                <td>Conexao via ODBC</td>
+                                <td>SQL Server, Access</td>
+                            </tr>
+                            <tr>
+                                <td>SQLAlchemy</td>
+                                <td>ORM universal</td>
+                                <td>Varios</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Exemplo: Conectar e Consultar</h3>
+                    <div class="formula-display">import pandas as pd
+                        import sqlite3
+
+                        # Criar conexao
+                        conn = sqlite3.connect('banco.db')
+
+                        # Executar query e carregar em DataFrame
+                        df = pd.read_sql_query("""
+                        SELECT produto, SUM(valor) as total
+                        FROM vendas
+                        WHERE data >= '2024-01-01'
+                        GROUP BY produto
+                        ORDER BY total DESC
+                        """, conn)
+
+                        # Fechar conexao
+                        conn.close()
+
+                        print(df.head())</div>
+
+                    <h3>Usando SQLAlchemy (Recomendado)</h3>
+                    <div class="formula-display">from sqlalchemy import create_engine
+                        import pandas as pd
+
+                        # String de conexao
+                        engine = create_engine('postgresql://user:senha@localhost:5432/meubanco')
+
+                        # Ler dados
+                        df = pd.read_sql('SELECT * FROM vendas', engine)
+
+                        # Escrever dados (criar/substituir tabela)
+                        df.to_sql('vendas_backup', engine, if_exists='replace', index=False)</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Boas Praticas em Python + SQL</h2>
+
+                    <ul class="step-list">
+                        <li><strong>Use parametros:</strong> Nunca concatene strings para evitar SQL Injection</li>
+                        <li><strong>Trate conexoes:</strong> Use context managers (with) para garantir fechamento</li>
+                        <li><strong>Limite resultados:</strong> Use LIMIT ou chunksize para grandes volumes</li>
+                        <li><strong>Armazene credenciais:</strong> Use variaveis de ambiente, nunca hardcode</li>
+                    </ul>
+
+                    <div class="example-box warning">
+                        <h4>[!] Evite SQL Injection</h4>
+                        <div class="formula-display"># ERRADO - Vulneravel
+                            query = f"SELECT * FROM users WHERE name = '{nome}'"
+
+                            # CORRETO - Parametrizado
+                            query = "SELECT * FROM users WHERE name = ?"
+                            cursor.execute(query, (nome,))</div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Conectando com Power BI</h2>
+
+                    <h3>Metodos de Conexao</h3>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Import Mode</h4>
+                            <p>Dados sao copiados para o Power BI. Mais rapido para consultas, mas dados podem ficar
+                                desatualizados.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>DirectQuery</h4>
+                            <p>Consulta o banco em tempo real. Dados sempre atualizados, mas pode ser mais lento.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Composite Mode</h4>
+                            <p>Combina Import e DirectQuery. Flexibilidade maxima.</p>
+                        </div>
+                    </div>
+
+                    <h3>Passo a Passo</h3>
+                    <ul class="step-list">
+                        <li>Abra Power BI Desktop > Obter Dados</li>
+                        <li>Selecione seu banco (SQL Server, MySQL, PostgreSQL...)</li>
+                        <li>Insira servidor e credenciais</li>
+                        <li>Escolha tabelas ou escreva query personalizada</li>
+                        <li>Configure modo de atualizacao</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <h4>[*] Query Personalizada no Power BI</h4>
+                        <p>Voce pode escrever SQL diretamente no Power BI em "Opcoes avancadas" ao conectar. Isso
+                            permite filtrar dados antes de importar, melhorando performance.</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Conectando com Tableau</h2>
+
+                    <h3>Conectores Nativos</h3>
+                    <p>Tableau suporta conexao direta com a maioria dos bancos: MySQL, PostgreSQL, SQL Server, Oracle,
+                        Snowflake, BigQuery, etc.</p>
+
+                    <h3>Custom SQL</h3>
+                    <div class="formula-display">-- No Tableau: Data > New Data Source > [Seu Banco] > New Custom SQL
+                        SELECT
+                        DATE_TRUNC('month', data) as mes,
+                        categoria,
+                        SUM(valor) as total_vendas
+                        FROM vendas
+                        WHERE data >= CURRENT_DATE - INTERVAL '12 months'
+                        GROUP BY 1, 2</div>
+
+                    <h3>Tableau Prep</h3>
+                    <p>Para transformacoes mais complexas, use Tableau Prep Builder para criar fluxos de ETL visuais
+                        antes de levar ao Tableau Desktop.</p>
+                </section>
+
+                <section class="content-section">
+                    <h2>APIs e Automacao</h2>
+
+                    <div class="example-box">
+                        <h4>Schedulando Queries com Python</h4>
+                        <div class="formula-display">import schedule
+                            import time
+
+                            def extrair_dados():
+                            # Sua logica de extracao aqui
+                            df = pd.read_sql("SELECT * FROM vendas_diarias", engine)
+                            df.to_excel(f"relatorio_{date.today()}.xlsx")
+                            print("Relatorio gerado!")
+
+                            # Executar todo dia as 8h
+                            schedule.every().day.at("08:00").do(extrair_dados)
+
+                            while True:
+                            schedule.run_pending()
+                            time.sleep(60)</div>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Enviando Dados para API</h4>
+                        <div class="formula-display">import requests
+                            import json
+
+                            # Dados do banco para JSON
+                            dados = df.to_dict(orient='records')
+
+                            # Enviar para API
+                            response = requests.post(
+                            'https://api.exemplo.com/dados',
+                            json=dados,
+                            headers={'Authorization': 'Bearer TOKEN'}
+                            )</div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: Python + SQL</h4>
+                        <p>Crie um script que conecta a um banco SQLite, executa uma query e salva o resultado em Excel.
+                        </p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: Power BI</h4>
+                        <p>Conecte o Power BI a um banco e crie um dashboard com filtros de data e categoria.</p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Crie um pipeline automatizado: Python extrai dados do banco, processa com Pandas e alimenta
+                            um dashboard no Power BI via arquivo compartilhado.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="queries-otimizadas.html">[<] Anterior: Queries Otimizadas</a>
+                            <a href="../index.html#coleta">Concluir Modulo [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

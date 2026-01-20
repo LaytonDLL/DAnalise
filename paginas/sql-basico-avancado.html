@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL do Basico ao Avancado | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.coleta-theme {
+            background: var(--coleta-light);
+            border-color: var(--coleta);
+        }
+
+        .page-title-section.coleta-theme::before {
+            background: var(--coleta);
+        }
+
+        .content-section h2 {
+            color: var(--coleta);
+            border-color: var(--coleta-light);
+        }
+
+        .back-link:hover {
+            color: var(--coleta);
+        }
+
+        .step-list li::before {
+            background: var(--coleta);
+            color: #111;
+        }
+
+        .step-list li:hover {
+            border-color: var(--coleta);
+        }
+
+        .table-example th {
+            background: var(--coleta);
+            color: #111;
+        }
+
+        .formula-display {
+            color: var(--coleta);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--coleta);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#coleta" class="back-link">[<] Voltar para Modulo 2 - Coleta</a>
+
+                <div class="page-title-section coleta-theme">
+                    <h1>Dominar SQL do Basico ao Avancado</h1>
+                    <p class="subtitle">Aprenda SQL completo: SELECT, JOINs, Subqueries, CTEs e Window Functions para
+                        analise de dados profissional.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>Por que SQL e Essencial?</h2>
+                    <p>SQL (Structured Query Language) e a linguagem padrao para comunicacao com bancos de dados
+                        relacionais. Praticamente toda empresa armazena dados em bancos de dados, e saber SQL e
+                        requisito obrigatorio para qualquer analista de dados.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Beneficios de Dominar SQL</h4>
+                        <ul>
+                            <li>Requisito em 100% das vagas de analista de dados</li>
+                            <li>Acesso direto a fonte de dados da empresa</li>
+                            <li>Performance superior a exportar para Excel</li>
+                            <li>Base para ferramentas de BI como Power BI e Tableau</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Comandos Fundamentais</h2>
+
+                    <h3>SELECT - Consultando Dados</h3>
+                    <p>O comando SELECT e a base de toda consulta SQL. Ele permite recuperar dados de uma ou mais
+                        tabelas.</p>
+                    <div class="formula-display">SELECT coluna1, coluna2 FROM tabela WHERE condicao ORDER BY coluna;
+                    </div>
+
+                    <h3>Clausulas Essenciais</h3>
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Clausula</th>
+                                <th>Funcao</th>
+                                <th>Exemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SELECT</td>
+                                <td>Define colunas a retornar</td>
+                                <td>SELECT nome, salario</td>
+                            </tr>
+                            <tr>
+                                <td>FROM</td>
+                                <td>Define a tabela origem</td>
+                                <td>FROM funcionarios</td>
+                            </tr>
+                            <tr>
+                                <td>WHERE</td>
+                                <td>Filtra registros</td>
+                                <td>WHERE salario > 5000</td>
+                            </tr>
+                            <tr>
+                                <td>ORDER BY</td>
+                                <td>Ordena resultados</td>
+                                <td>ORDER BY nome ASC</td>
+                            </tr>
+                            <tr>
+                                <td>GROUP BY</td>
+                                <td>Agrupa registros</td>
+                                <td>GROUP BY departamento</td>
+                            </tr>
+                            <tr>
+                                <td>HAVING</td>
+                                <td>Filtra grupos</td>
+                                <td>HAVING COUNT(*) > 10</td>
+                            </tr>
+                            <tr>
+                                <td>LIMIT</td>
+                                <td>Limita quantidade</td>
+                                <td>LIMIT 100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="content-section">
+                    <h2>JOINs - Combinando Tabelas</h2>
+                    <p>JOINs permitem combinar dados de multiplas tabelas em uma unica consulta.</p>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>INNER JOIN</h4>
+                            <p>Retorna apenas registros com correspondencia em ambas tabelas.</p>
+                            <div class="formula-display">SELECT * FROM A INNER JOIN B ON A.id = B.a_id</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>LEFT JOIN</h4>
+                            <p>Retorna todos de A + correspondencias de B (ou NULL).</p>
+                            <div class="formula-display">SELECT * FROM A LEFT JOIN B ON A.id = B.a_id</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>RIGHT JOIN</h4>
+                            <p>Retorna todos de B + correspondencias de A (ou NULL).</p>
+                            <div class="formula-display">SELECT * FROM A RIGHT JOIN B ON A.id = B.a_id</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>FULL JOIN</h4>
+                            <p>Retorna todos os registros de ambas tabelas.</p>
+                            <div class="formula-display">SELECT * FROM A FULL JOIN B ON A.id = B.a_id</div>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Exemplo Pratico: Vendas com Clientes</h4>
+                        <div class="formula-display">SELECT c.nome, v.data_venda, v.valor
+                            FROM clientes c
+                            INNER JOIN vendas v ON c.id = v.cliente_id
+                            WHERE v.data_venda >= '2024-01-01'
+                            ORDER BY v.valor DESC;</div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Subqueries e CTEs</h2>
+
+                    <h3>Subqueries (Subconsultas)</h3>
+                    <p>Uma query dentro de outra query. Uteis para calculos intermediarios.</p>
+                    <div class="formula-display">SELECT * FROM funcionarios
+                        WHERE salario > (SELECT AVG(salario) FROM funcionarios);</div>
+
+                    <h3>CTEs (Common Table Expressions)</h3>
+                    <p>Permitem criar "tabelas temporarias" para consultas mais legiveis.</p>
+                    <div class="formula-display">WITH vendas_mensais AS (
+                        SELECT MONTH(data) as mes, SUM(valor) as total
+                        FROM vendas
+                        GROUP BY MONTH(data)
+                        )
+                        SELECT mes, total,
+                        total - LAG(total) OVER (ORDER BY mes) as variacao
+                        FROM vendas_mensais;</div>
+
+                    <div class="tip-box">
+                        <h4>[*] Quando usar cada um?</h4>
+                        <p>Use <strong>subqueries</strong> para calculos simples e pontuais. Use <strong>CTEs</strong>
+                            quando precisar reutilizar o resultado varias vezes ou para melhorar a legibilidade de
+                            queries complexas.</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Window Functions</h2>
+                    <p>Window Functions permitem calculos sobre grupos de linhas relacionadas sem perder o detalhe de
+                        cada linha. Sao essenciais para analises avancadas.</p>
+
+                    <h3>Sintaxe Basica</h3>
+                    <div class="formula-display">funcao() OVER (PARTITION BY coluna ORDER BY coluna)</div>
+
+                    <h3>Principais Window Functions</h3>
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Funcao</th>
+                                <th>Descricao</th>
+                                <th>Exemplo de Uso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ROW_NUMBER()</td>
+                                <td>Numero sequencial unico</td>
+                                <td>Ranking de vendedores</td>
+                            </tr>
+                            <tr>
+                                <td>RANK()</td>
+                                <td>Ranking com empates (pula posicoes)</td>
+                                <td>Classificacao de produtos</td>
+                            </tr>
+                            <tr>
+                                <td>DENSE_RANK()</td>
+                                <td>Ranking com empates (nao pula)</td>
+                                <td>Nivel de clientes</td>
+                            </tr>
+                            <tr>
+                                <td>LAG()</td>
+                                <td>Valor da linha anterior</td>
+                                <td>Variacao mensal</td>
+                            </tr>
+                            <tr>
+                                <td>LEAD()</td>
+                                <td>Valor da proxima linha</td>
+                                <td>Projecao futura</td>
+                            </tr>
+                            <tr>
+                                <td>SUM() OVER</td>
+                                <td>Soma acumulada</td>
+                                <td>Total acumulado YTD</td>
+                            </tr>
+                            <tr>
+                                <td>AVG() OVER</td>
+                                <td>Media movel</td>
+                                <td>Media movel 3 meses</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="example-box">
+                        <h4>Exemplo: Ranking de Vendedores por Regiao</h4>
+                        <div class="formula-display">SELECT
+                            vendedor,
+                            regiao,
+                            total_vendas,
+                            RANK() OVER (PARTITION BY regiao ORDER BY total_vendas DESC) as ranking_regiao,
+                            SUM(total_vendas) OVER (PARTITION BY regiao) as total_regiao,
+                            ROUND(total_vendas * 100.0 / SUM(total_vendas) OVER (PARTITION BY regiao), 2) as percentual
+                            FROM vendas_consolidadas;</div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Funcoes de Agregacao</h2>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>COUNT</h4>
+                            <div class="formula-display">COUNT(*), COUNT(coluna), COUNT(DISTINCT coluna)</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>SUM / AVG</h4>
+                            <div class="formula-display">SUM(valor), AVG(valor)</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>MIN / MAX</h4>
+                            <div class="formula-display">MIN(data), MAX(preco)</div>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>GROUP_CONCAT</h4>
+                            <div class="formula-display">GROUP_CONCAT(nome SEPARATOR ', ')</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: JOINs</h4>
+                        <p>Liste todos os clientes com suas compras. Inclua clientes sem compras (mostrando NULL).</p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: Agregacao</h4>
+                        <p>Calcule o total de vendas por categoria e mes, filtrando apenas categorias com mais de R$
+                            10.000.</p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 3: Window Functions</h4>
+                        <p>Crie um ranking de produtos mais vendidos por categoria e calcule a variacao percentual de
+                            vendas mes a mes.</p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Crie uma analise de cohort mostrando a retencao de clientes mes a mes desde a primeira
+                            compra.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="../index.html#coleta">[<] Voltar ao Modulo</a>
+                            <a href="modelagem-banco-dados.html">Proximo: Modelagem de Dados [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

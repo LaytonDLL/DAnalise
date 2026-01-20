@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandas e NumPy | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.avancado-theme {
+            background: var(--avancado-light);
+            border-color: var(--avancado);
+        }
+
+        .content-section h2 {
+            color: var(--avancado);
+            border-color: var(--avancado-light);
+        }
+
+        .back-link:hover {
+            color: var(--avancado);
+        }
+
+        .step-list li::before {
+            background: var(--avancado);
+        }
+
+        .table-example th {
+            background: var(--avancado);
+        }
+
+        .formula-display {
+            color: var(--avancado);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--avancado);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#avancado" class="back-link">[<] Voltar para Modulo 4 - Avancado</a>
+
+                <div class="page-title-section avancado-theme">
+                    <h1>Manipular Dados com Pandas e NumPy</h1>
+                    <p class="subtitle">Domine as duas bibliotecas mais importantes para analise de dados em Python.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>O que e Pandas?</h2>
+                    <p>Pandas e a biblioteca padrao para manipulacao de dados tabulares em Python. Oferece estruturas de
+                        dados poderosas (DataFrame e Series) e centenas de funcoes para analise.</p>
+
+                    <div class="formula-display">import pandas as pd
+                        import numpy as np
+
+                        # Criar DataFrame de dicionario
+                        df = pd.DataFrame({
+                        'nome': ['Ana', 'Bruno', 'Carla'],
+                        'idade': [25, 30, 28],
+                        'salario': [5000, 7500, 6200]
+                        })
+
+                        # Ler de arquivo
+                        df = pd.read_csv('dados.csv')
+                        df = pd.read_excel('dados.xlsx')
+                        df = pd.read_sql('SELECT * FROM tabela', conexao)</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exploracao de Dados</h2>
+
+                    <div class="formula-display"># Primeiras e ultimas linhas
+                        df.head() # 5 primeiras linhas
+                        df.tail(10) # 10 ultimas linhas
+
+                        # Informacoes do DataFrame
+                        df.shape # (linhas, colunas)
+                        df.info() # tipos de dados, nulos
+                        df.describe() # estatisticas descritivas
+
+                        # Colunas e tipos
+                        df.columns # nomes das colunas
+                        df.dtypes # tipos de cada coluna
+
+                        # Valores unicos
+                        df['coluna'].unique()
+                        df['coluna'].nunique()
+                        df['coluna'].value_counts()</div>
+
+                    <div class="tip-box">
+                        <h4>[*] Primeiro Passo em Qualquer Analise</h4>
+                        <p>Sempre rode <code>df.info()</code> e <code>df.describe()</code> primeiro para entender seus
+                            dados!</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Selecao e Filtragem</h2>
+
+                    <div class="formula-display"># Selecionar coluna
+                        df['nome'] # retorna Series
+                        df[['nome', 'idade']] # retorna DataFrame
+
+                        # Selecionar linhas por indice
+                        df.loc[0] # primeira linha (por label)
+                        df.iloc[0] # primeira linha (por posicao)
+                        df.loc[0:5] # linhas 0 a 5
+                        df.iloc[0:5, 0:2] # linhas 0-5, colunas 0-2
+
+                        # Filtrar com condicoes
+                        df[df['idade'] > 25]
+                        df[df['nome'] == 'Ana']
+                        df[(df['idade'] > 25) & (df['salario'] > 5000)]
+                        df[df['nome'].isin(['Ana', 'Bruno'])]
+                        df[df['nome'].str.contains('A')]
+
+                        # Query (alternativa mais legivel)
+                        df.query('idade > 25 and salario > 5000')</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Agregacoes e Agrupamentos</h2>
+
+                    <div class="formula-display"># Agregacoes simples
+                        df['salario'].sum()
+                        df['salario'].mean()
+                        df['salario'].median()
+                        df['salario'].std()
+                        df['salario'].min()
+                        df['salario'].max()
+
+                        # Group By (equivalente ao SQL)
+                        df.groupby('regiao')['vendas'].sum()
+                        df.groupby('regiao')['vendas'].agg(['sum', 'mean', 'count'])
+
+                        # Multiplas colunas e agregacoes
+                        df.groupby(['regiao', 'produto']).agg({
+                        'vendas': 'sum',
+                        'quantidade': 'sum',
+                        'cliente_id': 'nunique'
+                        }).reset_index()
+
+                        # Pivot Table
+                        pd.pivot_table(df,
+                        values='vendas',
+                        index='regiao',
+                        columns='mes',
+                        aggfunc='sum',
+                        fill_value=0
+                        )</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Merge e Join</h2>
+
+                    <div class="formula-display"># Merge (JOIN)
+                        pd.merge(df1, df2, on='id') # inner join
+                        pd.merge(df1, df2, on='id', how='left') # left join
+                        pd.merge(df1, df2, left_on='id1', right_on='id2') # colunas diferentes
+
+                        # Concatenar DataFrames
+                        pd.concat([df1, df2]) # empilhar linhas
+                        pd.concat([df1, df2], axis=1) # juntar colunas
+
+                        # Exemplo pratico: vendas com clientes
+                        vendas = pd.merge(
+                        vendas_df,
+                        clientes_df,
+                        on='cliente_id',
+                        how='left'
+                        )</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>NumPy - Computacao Numerica</h2>
+                    <p>NumPy e a base de quase todas bibliotecas cientificas do Python. Oferece arrays multidimensionais
+                        e operacoes vetorizadas ultra-rapidas.</p>
+
+                    <div class="formula-display">import numpy as np
+
+                        # Criar arrays
+                        arr = np.array([1, 2, 3, 4, 5])
+                        zeros = np.zeros((3, 3))
+                        ones = np.ones((2, 4))
+                        range_arr = np.arange(0, 10, 2) # [0, 2, 4, 6, 8]
+                        linspace = np.linspace(0, 1, 5) # 5 pontos entre 0 e 1
+
+                        # Operacoes vetorizadas (muito mais rapido que loops!)
+                        arr * 2 # multiplica todos por 2
+                        arr ** 2 # eleva todos ao quadrado
+                        np.sqrt(arr) # raiz quadrada
+                        np.log(arr) # logaritmo
+
+                        # Estatisticas
+                        np.mean(arr)
+                        np.median(arr)
+                        np.std(arr)
+                        np.percentile(arr, [25, 50, 75])
+
+                        # Operacoes entre arrays
+                        arr1 + arr2
+                        arr1 * arr2
+                        np.dot(arr1, arr2) # produto escalar</div>
+
+                    <div class="example-box warning">
+                        <h4>[!] NumPy vs Listas Python</h4>
+                        <p>Operacoes NumPy sao ate <strong>100x mais rapidas</strong> que loops em listas Python! Sempre
+                            que possivel, use operacoes vetorizadas.</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Criando Colunas Calculadas</h2>
+
+                    <div class="formula-display"># Coluna simples
+                        df['lucro'] = df['receita'] - df['custo']
+
+                        # Com condicoes (np.where = SE do Excel)
+                        df['status'] = np.where(df['lucro'] > 0, 'Lucro', 'Prejuizo')
+
+                        # Multiplas condicoes (np.select)
+                        conditions = [
+                        df['lucro'] > 10000,
+                        df['lucro'] > 0,
+                        df['lucro'] <= 0 ] choices=['Alto', 'Medio' , 'Prejuizo' ] df['categoria']=np.select(conditions,
+                            choices, default='Indefinido' ) # Apply para funcoes complexas def categorizar(row): if
+                            row['idade'] < 18: return 'Menor' elif row['idade'] < 60: return 'Adulto' else:
+                            return 'Idoso' df['faixa_etaria']=df.apply(categorizar, axis=1)</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: Exploracao</h4>
+                        <p>Carregue um dataset e responda: quantas linhas/colunas? Quais tipos? Ha valores nulos? Quais
+                            as estatisticas descritivas?</p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: Agregacoes</h4>
+                        <p>Calcule o total de vendas por regiao e mes. Identifique o mes com maior venda de cada regiao.
+                        </p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Crie uma analise RFM (Recency, Frequency, Monetary) completa usando Pandas groupby e merge.
+                        </p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="python-basico.html">[<] Anterior: Python Basico</a>
+                            <a href="data-wrangling.html">Proximo: Data Wrangling [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

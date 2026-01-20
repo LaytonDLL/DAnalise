@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Profissional no GitHub | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.portfolio-theme {
+            background: var(--portfolio-light);
+            border-color: var(--portfolio);
+        }
+
+        .content-section h2 {
+            color: var(--portfolio);
+            border-color: var(--portfolio-light);
+        }
+
+        .back-link:hover {
+            color: var(--portfolio);
+        }
+
+        .step-list li::before {
+            background: var(--portfolio);
+        }
+
+        .table-example th {
+            background: var(--portfolio);
+        }
+
+        .formula-display {
+            color: var(--portfolio);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--portfolio);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#portfolio" class="back-link">[<] Voltar para Modulo 5 - Portfolio</a>
+
+                <div class="page-title-section portfolio-theme">
+                    <h1>Construir Portfolio Profissional no GitHub</h1>
+                    <p class="subtitle">Aprenda a criar um perfil no GitHub que impressiona recrutadores e mostra suas
+                        habilidades reais.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>Por que GitHub e Essencial?</h2>
+                    <p>O GitHub e a plataforma onde recrutadores e gestores verificam suas habilidades reais. Um bom
+                        portfolio no GitHub pode ser mais valioso que certificados.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Beneficios de um Bom Portfolio</h4>
+                        <ul>
+                            <li>Prova concreta das suas habilidades (nao apenas palavras)</li>
+                            <li>Diferenciacao em processos seletivos</li>
+                            <li>Demonstra iniciativa e paixao pela area</li>
+                            <li>Facilita networking com outros profissionais</li>
+                            <li>Recrutadores podem avaliar qualidade do codigo</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Configurando seu Perfil</h2>
+
+                    <ul class="step-list">
+                        <li><strong>Crie sua conta:</strong> github.com - use um email profissional</li>
+                        <li><strong>Nome de usuario:</strong> Use seu nome real ou variacao profissional (ex:
+                            joaosilva-data)</li>
+                        <li><strong>Foto profissional:</strong> Mesma foto do LinkedIn, rosto visivel</li>
+                        <li><strong>Bio:</strong> Descreva sua area em 1-2 linhas (ex: "Data Analyst | Python | SQL |
+                            Power BI")</li>
+                        <li><strong>Localizacao:</strong> Cidade/Estado para aparecer em buscas locais</li>
+                        <li><strong>Links:</strong> Adicione LinkedIn e site/portfolio pessoal se tiver</li>
+                    </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2>README do Perfil</h2>
+                    <p>Crie um repositorio com seu nome de usuario para ter um README no perfil. Este e seu cartao de
+                        visitas!</p>
+
+                    <div class="formula-display"># Ola, eu sou o Joao Silva ðŸ‘‹
+
+                        ## Sobre Mim
+                        ðŸŽ¯ Analista de Dados em transicao de carreira
+                        ðŸ“Š Apaixonado por transformar dados em insights acionaveis
+                        ðŸŒ± Atualmente aprendendo Machine Learning
+
+                        ## Habilidades
+                        ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+                        ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=mysql&logoColor=white)
+                        ![Power
+                        BI](https://img.shields.io/badge/Power_BI-F2C811?style=flat&logo=powerbi&logoColor=black)
+                        ![Excel](https://img.shields.io/badge/Excel-217346?style=flat&logo=microsoftexcel&logoColor=white)
+
+                        ## Projetos Destacados
+                        - ðŸ“ˆ [Analise de Vendas E-commerce](link) - Python, Pandas, Visualizacao
+                        - ðŸ  [Predicao de Precos Imoveis](link) - Machine Learning, Scikit-learn
+                        - ðŸ“Š [Dashboard de RH](link) - Power BI, DAX
+
+                        ## Contato
+                        [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](seu_link)
+                        [![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:seu_email)
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Estrutura de Repositorio de Projeto</h2>
+
+                    <div class="formula-display">meu-projeto-analise/
+                        â”œâ”€â”€ README.md # Descricao do projeto (ESSENCIAL!)
+                        â”œâ”€â”€ data/
+                        â”‚ â”œâ”€â”€ raw/ # Dados originais
+                        â”‚ â””â”€â”€ processed/ # Dados processados
+                        â”œâ”€â”€ notebooks/
+                        â”‚ â”œâ”€â”€ 01_exploracao.ipynb
+                        â”‚ â”œâ”€â”€ 02_limpeza.ipynb
+                        â”‚ â””â”€â”€ 03_analise.ipynb
+                        â”œâ”€â”€ src/ # Scripts Python
+                        â”‚ â”œâ”€â”€ utils.py
+                        â”‚ â””â”€â”€ visualization.py
+                        â”œâ”€â”€ reports/
+                        â”‚ â”œâ”€â”€ graficos/ # Imagens dos graficos
+                        â”‚ â””â”€â”€ apresentacao.pdf
+                        â”œâ”€â”€ requirements.txt # Dependencias
+                        â””â”€â”€ .gitignore # Arquivos a ignorar</div>
+
+                    <div class="tip-box">
+                        <h4>[*] O README e Tudo!</h4>
+                        <p>Recrutadores geralmente so leem o README. Capriche nele: explique o problema, metodologia,
+                            resultados e insights. Use imagens dos graficos!</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Template de README para Projetos</h2>
+
+                    <div class="formula-display"># ðŸ“Š Analise de Churn de Clientes
+
+                        ## ðŸ“‹ Sobre o Projeto
+                        Analise preditiva para identificar clientes com risco de cancelamento
+                        usando dados de uma empresa de telecomunicacoes.
+
+                        ## ðŸŽ¯ Objetivo
+                        Reduzir taxa de churn de 20% para 10% atraves de acoes preventivas
+                        baseadas em modelo preditivo.
+
+                        ## ðŸ“ Dados
+                        - Fonte: [Kaggle - Telecom Churn Dataset](link)
+                        - 7.043 clientes, 21 variaveis
+                        - Periodo: 2019-2023
+
+                        ## ðŸ›  Tecnologias
+                        - Python 3.10
+                        - Pandas, NumPy
+                        - Scikit-learn
+                        - Matplotlib, Seaborn
+
+                        ## ðŸ“ˆ Principais Resultados
+                        - Modelo Random Forest com 85% de acuracia
+                        - 3 principais fatores de churn identificados
+                        - Economia estimada de R$ 2M/ano
+
+                        ![Grafico de Resultados](reports/graficos/resultado.png)
+
+                        ## ðŸš€ Como Executar
+                        ```bash
+                        git clone https://github.com/usuario/projeto.git
+                        pip install -r requirements.txt
+                        jupyter notebook
+                        ```
+
+                        ## ðŸ“ Proximos Passos
+                        - [ ] Implementar modelo em producao
+                        - [ ] Criar dashboard de monitoramento
+
+                        ## ðŸ‘¤ Autor
+                        Joao Silva - [LinkedIn](link) - [Email](mailto:email)</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Comandos Git Essenciais</h2>
+
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Comando</th>
+                                <th>O que Faz</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>git init</td>
+                                <td>Inicializa repositorio local</td>
+                            </tr>
+                            <tr>
+                                <td>git clone URL</td>
+                                <td>Clona repositorio remoto</td>
+                            </tr>
+                            <tr>
+                                <td>git add .</td>
+                                <td>Adiciona todos arquivos ao stage</td>
+                            </tr>
+                            <tr>
+                                <td>git commit -m "msg"</td>
+                                <td>Cria commit com mensagem</td>
+                            </tr>
+                            <tr>
+                                <td>git push</td>
+                                <td>Envia commits para GitHub</td>
+                            </tr>
+                            <tr>
+                                <td>git pull</td>
+                                <td>Atualiza com mudancas remotas</td>
+                            </tr>
+                            <tr>
+                                <td>git status</td>
+                                <td>Verifica estado atual</td>
+                            </tr>
+                            <tr>
+                                <td>git log</td>
+                                <td>Ve historico de commits</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: Perfil</h4>
+                        <p>Crie seu perfil no GitHub com foto, bio e README personalizado usando o template acima.</p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: Primeiro Repositorio</h4>
+                        <p>Crie um repositorio para um projeto de analise com README completo, estrutura de pastas e
+                            pelo menos 1 notebook.</p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Publique 3 projetos no GitHub nas proximas 4 semanas, cada um com README profissional e
+                            resultados visuais.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="../index.html#portfolio">[<] Voltar ao Modulo</a>
+                            <a href="projetos-reais.html">Proximo: Projetos Reais [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

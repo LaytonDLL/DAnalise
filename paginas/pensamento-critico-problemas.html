@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pensamento Critico e Resolucao de Problemas | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.portfolio-theme {
+            background: var(--portfolio-light);
+            border-color: var(--portfolio);
+        }
+
+        .content-section h2 {
+            color: var(--portfolio);
+            border-color: var(--portfolio-light);
+        }
+
+        .back-link:hover {
+            color: var(--portfolio);
+        }
+
+        .step-list li::before {
+            background: var(--portfolio);
+        }
+
+        .table-example th {
+            background: var(--portfolio);
+        }
+
+        .formula-display {
+            color: var(--portfolio);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--portfolio);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#portfolio" class="back-link">[<] Voltar para Modulo 5 - Portfolio</a>
+
+                <div class="page-title-section portfolio-theme">
+                    <h1>Pensamento Critico e Resolucao de Problemas</h1>
+                    <p class="subtitle">Desenvolva a habilidade mais valiosa de um analista: saber fazer as perguntas
+                        certas e resolver problemas complexos.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>Por que Pensamento Critico?</h2>
+                    <p>Ferramentas podem ser aprendidas em semanas. Pensamento critico leva anos para desenvolver e e o
+                        que diferencia analistas medianos de excepcionais.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] O Que Recrutadores Buscam</h4>
+                        <ul>
+                            <li>Capacidade de estruturar problemas complexos</li>
+                            <li>Questionar dados e suposicoes</li>
+                            <li>Identificar causas raiz, nao apenas sintomas</li>
+                            <li>Comunicar conclusoes de forma clara</li>
+                            <li>Propor acoes baseadas em evidencias</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Framework para Resolver Problemas</h2>
+
+                    <ul class="step-list">
+                        <li><strong>Defina o Problema:</strong> O que exatamente estamos tentando resolver? Qual o
+                            impacto?</li>
+                        <li><strong>Decomponha:</strong> Quebre o problema grande em partes menores e manejÃ¡veis</li>
+                        <li><strong>Priorize:</strong> Quais partes tem maior impacto? Comece por elas</li>
+                        <li><strong>Hipoteses:</strong> Quais possiveis explicacoes? Liste-as antes de analisar</li>
+                        <li><strong>Analise:</strong> Use dados para testar cada hipotese</li>
+                        <li><strong>Conclua:</strong> O que os dados dizem? Qual a resposta?</li>
+                        <li><strong>Recomende:</strong> O que devemos FAZER com base nisso?</li>
+                    </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2>Arvore de Problemas (Issue Tree)</h2>
+                    <p>Tecnica da McKinsey para decompor problemas complexos em partes analisÃ¡veis.</p>
+
+                    <div class="formula-display">PROBLEMA: Por que as vendas cairam 20% no Q4?
+                        |
+                        +-- Menos clientes?
+                        | +-- Menos novos clientes?
+                        | | +-- Menos leads?
+                        | | +-- Menor conversao?
+                        | +-- Mais churn?
+                        | +-- Insatisfacao?
+                        | +-- Preco?
+                        | +-- Concorrencia?
+                        |
+                        +-- Menor ticket medio?
+                        | +-- Mix de produtos?
+                        | +-- Menos unidades por pedido?
+                        | +-- Mais descontos?
+                        |
+                        +-- Fatores externos?
+                        +-- Sazonalidade?
+                        +-- Economia?
+                        +-- Novo concorrente?</div>
+
+                    <div class="tip-box">
+                        <h4>[*] Principio MECE</h4>
+                        <p><strong>M</strong>utually <strong>E</strong>xclusive, <strong>C</strong>ollectively
+                            <strong>E</strong>xhaustive. Cada ramo deve ser independente (sem sobreposicao) e juntos
+                            devem cobrir todas as possibilidades.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Os 5 Porques</h2>
+                    <p>Tecnica da Toyota para encontrar a causa raiz de um problema.</p>
+
+                    <div class="example-box">
+                        <h4>Exemplo Pratico</h4>
+                        <p><strong>Problema:</strong> O dashboard nao foi entregue no prazo</p>
+                        <ul>
+                            <li><strong>Por que 1?</strong> Porque os dados nao estavam prontos</li>
+                            <li><strong>Por que 2?</strong> Porque a integracao com o sistema falhou</li>
+                            <li><strong>Por que 3?</strong> Porque houve mudanca na API sem aviso</li>
+                            <li><strong>Por que 4?</strong> Porque nao ha comunicacao entre TI e BI</li>
+                            <li><strong>Por que 5?</strong> Porque nao existe processo de governanca de dados</li>
+                        </ul>
+                        <p><strong>Causa Raiz:</strong> Falta de governanca de dados (nao o dashboard em si!)</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Perguntas que Todo Analista Deve Fazer</h2>
+
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Situacao</th>
+                                <th>Perguntas a Fazer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Recebendo Pedido</td>
+                                <td>Qual problema estamos resolvendo? Qual decisao sera tomada com isso? Quem vai usar?
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Analisando Dados</td>
+                                <td>Esses dados sao confiaveis? Qual a fonte? Quando foram atualizados? Ha viÃ©s?</td>
+                            </tr>
+                            <tr>
+                                <td>Vendo Correlacao</td>
+                                <td>E correlacao ou causalidade? Ha variaveis ocultas? Faz sentido logicamente?</td>
+                            </tr>
+                            <tr>
+                                <td>Encontrando Anomalia</td>
+                                <td>E erro de dados ou insight real? Ja aconteceu antes? O que mudou?</td>
+                            </tr>
+                            <tr>
+                                <td>Apresentando</td>
+                                <td>Estou respondendo a pergunta original? A conclusao e acionavel? O que pode dar
+                                    errado?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="content-section">
+                    <h2>Vieses Cognitivos a Evitar</h2>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Vies de Confirmacao</h4>
+                            <p>Buscar apenas dados que confirmam sua hipotese inicial. Sempre procure evidencias CONTRA
+                                sua teoria.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Correlacao vs Causalidade</h4>
+                            <p>Duas coisas acontecerem juntas nao significa que uma causa a outra. Vendas de sorvete e
+                                afogamentos correlacionam (ambos aumentam no verao).</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Vies de Sobrevivencia</h4>
+                            <p>Analisar apenas casos de sucesso ignora os fracassos. "Todos os unicornios comecaram em
+                                garagens" ignora milhares que falharam.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Ancoragem</h4>
+                            <p>Fixar-se no primeiro numero que ve. Se alguem diz "vendas cairam 50%", voce avalia tudo
+                                em relacao a isso.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Praticando Pensamento Critico</h2>
+
+                    <div class="example-box">
+                        <h4>Case 1: Vendas em Queda</h4>
+                        <p>O gerente diz: "Vendas cairam porque o time de vendas esta desmotivado".</p>
+                        <p><strong>Exercicio:</strong> Liste 5 hipoteses alternativas e quais dados voce buscaria para
+                            validar cada uma.</p>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Case 2: Dashboard Subestimado</h4>
+                        <p>Voce criou um dashboard incrivel mas ninguem usa.</p>
+                        <p><strong>Exercicio:</strong> Use os 5 Porques para encontrar a causa raiz e propor solucao.
+                        </p>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Case 3: Metrica Suspeita</h4>
+                        <p>O relatorio mostra que conversao aumentou 300% em uma semana.</p>
+                        <p><strong>Exercicio:</strong> Liste 5 perguntas que voce faria antes de reportar esse numero.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2">Como Desenvolver</h2>
+
+                        <ul class="step-list">
+                            <li><strong>Leia estudos de caso:</strong> Harvard Business Review, McKinsey Insights</li>
+                            <li><strong>Pratique com dados reais:</strong> Kaggle competitions, analise de noticias</li>
+                            <li><strong>Questione tudo:</strong> Sempre pergunte "por que?" e "como sabemos?"</li>
+                            <li><strong>Explique para outros:</strong> Ensinar forca voce a estruturar pensamento</li>
+                            <li><strong>Aceite estar errado:</strong> Errar e parte do processo de aprender</li>
+                        </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: Issue Tree</h4>
+                        <p>Crie uma arvore de problemas para: "Por que a taxa de retencao de clientes esta caindo?"</p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: 5 Porques</h4>
+                        <p>Aplique os 5 Porques a um problema real do seu trabalho ou estudo.</p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Leia uma noticia com estatisticas e liste todos os vieses cognitivos e perguntas nao
+                            respondidas que voce identificar.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="linkedin-dados.html">[<] Anterior: LinkedIn</a>
+                            <a href="../index.html#portfolio">Concluir Modulo [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

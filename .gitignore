@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+*.log
+.vscode/
+tmp/
+*.pyc
+__pycache__/
+add_favicon.py
+cleanup_script.py
+index_fix.html

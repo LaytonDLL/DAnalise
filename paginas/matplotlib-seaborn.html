@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matplotlib e Seaborn | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.avancado-theme {
+            background: var(--avancado-light);
+            border-color: var(--avancado);
+        }
+
+        .content-section h2 {
+            color: var(--avancado);
+            border-color: var(--avancado-light);
+        }
+
+        .back-link:hover {
+            color: var(--avancado);
+        }
+
+        .step-list li::before {
+            background: var(--avancado);
+        }
+
+        .table-example th {
+            background: var(--avancado);
+        }
+
+        .formula-display {
+            color: var(--avancado);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--avancado);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#avancado" class="back-link">[<] Voltar para Modulo 4 - Avancado</a>
+
+                <div class="page-title-section avancado-theme">
+                    <h1>Visualizacoes com Matplotlib e Seaborn</h1>
+                    <p class="subtitle">Crie graficos profissionais em Python para explorar dados e comunicar insights.
+                    </p>
+                </div>
+
+                <section class="content-section">
+                    <h2>Matplotlib vs Seaborn</h2>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Matplotlib</h4>
+                            <p>Biblioteca base de visualizacao. Maximo controle e personalizacao. Mais verbosa.</p>
+                            <ul>
+                                <li>Controle total sobre cada elemento</li>
+                                <li>Base para outras bibliotecas</li>
+                                <li>Mais codigo necessario</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Seaborn</h4>
+                            <p>Construida sobre Matplotlib. Graficos bonitos com menos codigo. Foco em estatistica.</p>
+                            <ul>
+                                <li>Graficos bonitos por padrao</li>
+                                <li>Ideal para exploracao rapida</li>
+                                <li>Integrado com Pandas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="formula-display">import matplotlib.pyplot as plt
+                        import seaborn as sns
+                        import pandas as pd
+
+                        # Configuracao recomendada
+                        plt.style.use('seaborn-v0_8-whitegrid')
+                        sns.set_palette('husl')
+                        plt.rcParams['figure.figsize'] = (10, 6)
+                        plt.rcParams['font.size'] = 12</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Graficos com Matplotlib</h2>
+
+                    <h3>Grafico de Linha</h3>
+                    <div class="formula-display">fig, ax = plt.subplots(figsize=(10, 6))
+
+                        ax.plot(df['data'], df['vendas'], label='Vendas', color='blue', linewidth=2)
+                        ax.plot(df['data'], df['meta'], label='Meta', color='red', linestyle='--')
+
+                        ax.set_title('Vendas vs Meta ao Longo do Tempo', fontsize=14)
+                        ax.set_xlabel('Data')
+                        ax.set_ylabel('Valor (R$)')
+                        ax.legend()
+                        ax.grid(True, alpha=0.3)
+
+                        plt.tight_layout()
+                        plt.savefig('grafico.png', dpi=300)
+                        plt.show()</div>
+
+                    <h3>Grafico de Barras</h3>
+                    <div class="formula-display">fig, ax = plt.subplots(figsize=(10, 6))
+
+                        cores = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6']
+                        ax.bar(df['regiao'], df['vendas'], color=cores)
+
+                        # Adicionar valores nas barras
+                        for i, v in enumerate(df['vendas']):
+                        ax.text(i, v + 1000, f'R$ {v:,.0f}', ha='center', fontsize=10)
+
+                        ax.set_title('Vendas por Regiao')
+                        ax.set_ylabel('Vendas (R$)')
+                        plt.xticks(rotation=45)
+                        plt.tight_layout()
+                        plt.show()</div>
+
+                    <h3>Subplots (Multiplos Graficos)</h3>
+                    <div class="formula-display">fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+                        # Grafico 1
+                        axes[0, 0].plot(df['data'], df['vendas'])
+                        axes[0, 0].set_title('Tendencia de Vendas')
+
+                        # Grafico 2
+                        axes[0, 1].bar(df['produto'], df['quantidade'])
+                        axes[0, 1].set_title('Quantidade por Produto')
+
+                        # Grafico 3
+                        axes[1, 0].scatter(df['preco'], df['vendas'])
+                        axes[1, 0].set_title('Preco vs Vendas')
+
+                        # Grafico 4
+                        axes[1, 1].pie(df['vendas'], labels=df['regiao'], autopct='%1.1f%%')
+                        axes[1, 1].set_title('Distribuicao por Regiao')
+
+                        plt.tight_layout()
+                        plt.show()</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Graficos com Seaborn</h2>
+
+                    <h3>Graficos Categoricos</h3>
+                    <div class="formula-display"># Barras com media e intervalo de confianca
+                        sns.barplot(data=df, x='regiao', y='vendas', hue='categoria')
+
+                        # Box plot
+                        sns.boxplot(data=df, x='regiao', y='vendas')
+
+                        # Violin plot (box + distribuicao)
+                        sns.violinplot(data=df, x='categoria', y='valor')
+
+                        # Count plot (contagem)
+                        sns.countplot(data=df, x='categoria', hue='status')</div>
+
+                    <h3>Graficos de Distribuicao</h3>
+                    <div class="formula-display"># Histograma com KDE
+                        sns.histplot(data=df, x='idade', kde=True, bins=30)
+
+                        # KDE plot (densidade)
+                        sns.kdeplot(data=df, x='salario', hue='departamento', fill=True)
+
+                        # ECDF (distribuicao acumulada)
+                        sns.ecdfplot(data=df, x='valor')</div>
+
+                    <h3>Graficos de Relacao</h3>
+                    <div class="formula-display"># Scatter com regressao
+                        sns.regplot(data=df, x='idade', y='salario')
+
+                        # Scatter com cores por categoria
+                        sns.scatterplot(data=df, x='preco', y='vendas', hue='categoria', size='quantidade')
+
+                        # Pair plot (multiplas variaveis)
+                        sns.pairplot(df[['idade', 'salario', 'experiencia']], diag_kind='kde')
+
+                        # Correlation heatmap
+                        correlacao = df[['preco', 'quantidade', 'desconto', 'lucro']].corr()
+                        sns.heatmap(correlacao, annot=True, cmap='coolwarm', center=0)</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Graficos para Analise de Dados</h2>
+
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Objetivo</th>
+                                <th>Grafico</th>
+                                <th>Funcao Seaborn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Comparar categorias</td>
+                                <td>Barras</td>
+                                <td>sns.barplot()</td>
+                            </tr>
+                            <tr>
+                                <td>Tendencia temporal</td>
+                                <td>Linha</td>
+                                <td>sns.lineplot()</td>
+                            </tr>
+                            <tr>
+                                <td>Distribuicao</td>
+                                <td>Histograma</td>
+                                <td>sns.histplot()</td>
+                            </tr>
+                            <tr>
+                                <td>Outliers</td>
+                                <td>Box plot</td>
+                                <td>sns.boxplot()</td>
+                            </tr>
+                            <tr>
+                                <td>Correlacao</td>
+                                <td>Heatmap</td>
+                                <td>sns.heatmap()</td>
+                            </tr>
+                            <tr>
+                                <td>Relacao 2 variaveis</td>
+                                <td>Scatter</td>
+                                <td>sns.scatterplot()</td>
+                            </tr>
+                            <tr>
+                                <td>Multiplas variaveis</td>
+                                <td>Pair plot</td>
+                                <td>sns.pairplot()</td>
+                            </tr>
+                            <tr>
+                                <td>Proporcao</td>
+                                <td>Pizza</td>
+                                <td>plt.pie()</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="content-section">
+                    <h2>Personalizacao Avancada</h2>
+
+                    <div class="formula-display"># Tema e estilo
+                        sns.set_theme(style='whitegrid', palette='deep')
+
+                        # Cores personalizadas
+                        cores_empresa = ['#003366', '#0066CC', '#3399FF', '#66CCFF']
+                        sns.set_palette(cores_empresa)
+
+                        # Figura com estilo profissional
+                        fig, ax = plt.subplots(figsize=(12, 6))
+
+                        sns.barplot(data=df, x='mes', y='vendas', color='#003366', ax=ax)
+
+                        ax.set_title('Vendas Mensais 2024', fontsize=16, fontweight='bold', pad=20)
+                        ax.set_xlabel('Mes', fontsize=12)
+                        ax.set_ylabel('Vendas (R$ milhoes)', fontsize=12)
+
+                        # Remover bordas
+                        ax.spines['top'].set_visible(False)
+                        ax.spines['right'].set_visible(False)
+
+                        # Formatacao do eixo Y
+                        ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'{x/1e6:.1f}M'))
+
+                        # Adicionar fonte
+                        plt.text(0.99, 0.01, 'Fonte: Dados internos', transform=ax.transAxes,
+                        ha='right', fontsize=8, color='gray')
+
+                        plt.tight_layout()
+                        plt.show()</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Salvando Graficos</h2>
+
+                    <div class="formula-display"># Salvar em diferentes formatos
+                        plt.savefig('grafico.png', dpi=300, bbox_inches='tight')
+                        plt.savefig('grafico.pdf', format='pdf', bbox_inches='tight')
+                        plt.savefig('grafico.svg', format='svg', bbox_inches='tight')
+
+                        # Com fundo transparente
+                        plt.savefig('grafico.png', transparent=True, dpi=300)</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: Exploracao</h4>
+                        <p>Crie 4 graficos diferentes para explorar um dataset: histograma, boxplot, barras e scatter.
+                        </p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: Correlacao</h4>
+                        <p>Crie um heatmap de correlacao e identifique as variaveis mais correlacionadas.</p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Crie um dashboard de analise exploratoria com 6+ graficos organizados em subplots, incluindo
+                            titulo, anotacoes e estilo profissional.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="data-wrangling.html">[<] Anterior: Data Wrangling</a>
+                            <a href="../index.html#avancado">Concluir Modulo [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI do Basico ao DAX Avancado | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.visualizacao-theme {
+            background: var(--visualizacao-light);
+            border-color: var(--visualizacao);
+        }
+
+        .content-section h2 {
+            color: var(--visualizacao);
+            border-color: var(--visualizacao-light);
+        }
+
+        .back-link:hover {
+            color: var(--visualizacao);
+        }
+
+        .step-list li::before {
+            background: var(--visualizacao);
+        }
+
+        .table-example th {
+            background: var(--visualizacao);
+        }
+
+        .formula-display {
+            color: var(--visualizacao);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--visualizacao);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#visualizacao" class="back-link">[<] Voltar para Modulo 3 - Visualizacao</a>
+
+                <div class="page-title-section visualizacao-theme">
+                    <h1>Dominar Power BI do Basico ao DAX Avancado</h1>
+                    <p class="subtitle">Aprenda a criar relatorios profissionais, dominar DAX e transformar dados em
+                        insights acionaveis.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>O que e Power BI?</h2>
+                    <p>Power BI e a ferramenta de Business Intelligence mais popular do mercado, desenvolvida pela
+                        Microsoft. Permite conectar diversas fontes de dados, transformar, modelar e visualizar
+                        informacoes em dashboards interativos.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Por que Aprender Power BI?</h4>
+                        <ul>
+                            <li>Ferramenta #1 em Business Intelligence globalmente</li>
+                            <li>Integracao nativa com Excel e ambiente Microsoft</li>
+                            <li>Requisito em 80%+ das vagas de analista</li>
+                            <li>Versao gratuita (Desktop) muito completa</li>
+                            <li>Comunidade ativa e muitos recursos de aprendizado</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Componentes do Power BI</h2>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Power BI Desktop</h4>
+                            <p>Aplicacao gratuita para Windows onde voce cria relatorios. Ambiente de desenvolvimento
+                                principal.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Power BI Service</h4>
+                            <p>Plataforma online (app.powerbi.com) para publicar, compartilhar e consumir relatorios.
+                            </p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Power BI Mobile</h4>
+                            <p>Apps para iOS e Android para visualizar dashboards em dispositivos moveis.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Power Query</h4>
+                            <p>Motor de ETL integrado para extrair, transformar e carregar dados de diversas fontes.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Fluxo de Trabalho</h2>
+                    <ul class="step-list">
+                        <li><strong>Conectar:</strong> Importar dados de Excel, SQL, APIs, Web, etc.</li>
+                        <li><strong>Transformar:</strong> Limpar e preparar dados no Power Query</li>
+                        <li><strong>Modelar:</strong> Criar relacionamentos entre tabelas</li>
+                        <li><strong>Calcular:</strong> Criar medidas e colunas com DAX</li>
+                        <li><strong>Visualizar:</strong> Construir graficos e dashboards</li>
+                        <li><strong>Publicar:</strong> Compartilhar no Power BI Service</li>
+                    </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2>Power Query - Transformacao de Dados</h2>
+                    <p>Power Query e o motor de ETL do Power BI. Permite transformar dados sem alterar a fonte original.
+                    </p>
+
+                    <h3>Transformacoes Comuns</h3>
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Operacao</th>
+                                <th>Descricao</th>
+                                <th>Uso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Remover Colunas</td>
+                                <td>Elimina colunas desnecessarias</td>
+                                <td>Reduzir tamanho do modelo</td>
+                            </tr>
+                            <tr>
+                                <td>Filtrar Linhas</td>
+                                <td>Remove registros indesejados</td>
+                                <td>Eliminar dados antigos/invalidos</td>
+                            </tr>
+                            <tr>
+                                <td>Alterar Tipo</td>
+                                <td>Define tipo de dado correto</td>
+                                <td>Garantir calculos corretos</td>
+                            </tr>
+                            <tr>
+                                <td>Dividir Coluna</td>
+                                <td>Separa texto por delimitador</td>
+                                <td>Extrair partes de dados</td>
+                            </tr>
+                            <tr>
+                                <td>Mesclar Consultas</td>
+                                <td>JOIN entre tabelas</td>
+                                <td>Combinar fontes de dados</td>
+                            </tr>
+                            <tr>
+                                <td>Agrupar</td>
+                                <td>Agregacoes (soma, contagem)</td>
+                                <td>Resumir dados</td>
+                            </tr>
+                            <tr>
+                                <td>Dinamizar/Transpor</td>
+                                <td>Pivot/Unpivot de dados</td>
+                                <td>Reestruturar tabelas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="tip-box">
+                        <h4>[*] Dica de Performance</h4>
+                        <p>Faca o maximo de transformacoes no Power Query (lado esquerdo) antes de carregar para o
+                            modelo. Isso reduz o tamanho do arquivo e melhora performance.</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Modelagem de Dados</h2>
+                    <p>Um bom modelo de dados e a base de relatorios performaticos. Use o esquema estrela (Star Schema).
+                    </p>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Tabela Fato</h4>
+                            <p>Contem as metricas numericas (vendas, quantidade, valor). Granularidade definida pelo
+                                negocio.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Tabelas Dimensao</h4>
+                            <p>Descrevem o contexto (Produto, Cliente, Data, Loja). Filtram e segmentam os fatos.</p>
+                        </div>
+                    </div>
+
+                    <div class="example-box warning">
+                        <h4>[!] Evite Relacionamentos Bidirecionais</h4>
+                        <p>Relacionamentos bidirecionais podem causar ambiguidade e problemas de performance. Use apenas
+                            quando absolutamente necessario e entenda as implicacoes.</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>DAX - Data Analysis Expressions</h2>
+                    <p>DAX e a linguagem de formulas do Power BI. Permite criar medidas, colunas calculadas e tabelas
+                        calculadas.</p>
+
+                    <h3>Medidas vs Colunas Calculadas</h3>
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Aspecto</th>
+                                <th>Medida</th>
+                                <th>Coluna Calculada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Calculo</td>
+                                <td>Em tempo de consulta</td>
+                                <td>No refresh dos dados</td>
+                            </tr>
+                            <tr>
+                                <td>Armazenamento</td>
+                                <td>Nao ocupa espaco</td>
+                                <td>Ocupa espaco na tabela</td>
+                            </tr>
+                            <tr>
+                                <td>Contexto</td>
+                                <td>Dinamico (muda com filtros)</td>
+                                <td>Fixo (linha a linha)</td>
+                            </tr>
+                            <tr>
+                                <td>Uso</td>
+                                <td>Agregacoes, KPIs</td>
+                                <td>Categorizacao, lookup</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Funcoes DAX Essenciais</h3>
+                    <div class="formula-display">// Agregacoes basicas
+                        Total Vendas = SUM(Vendas[Valor])
+                        Qtd Vendas = COUNT(Vendas[ID])
+                        Ticket Medio = AVERAGE(Vendas[Valor])
+
+                        // CALCULATE - A funcao mais importante
+                        Vendas SP = CALCULATE([Total Vendas], Clientes[Estado] = "SP")
+
+                        // Funcoes de Inteligencia Temporal
+                        Vendas YTD = TOTALYTD([Total Vendas], Calendario[Data])
+                        Vendas Ano Anterior = CALCULATE([Total Vendas], SAMEPERIODLASTYEAR(Calendario[Data]))
+                        Variacao YoY = DIVIDE([Total Vendas] - [Vendas Ano Anterior], [Vendas Ano Anterior])
+
+                        // Iteradores (X functions)
+                        Receita = SUMX(Vendas, Vendas[Quantidade] * RELATED(Produtos[Preco]))</div>
+
+                    <h3>CALCULATE - Entenda Profundamente</h3>
+                    <p>CALCULATE modifica o contexto de filtro. E a funcao mais poderosa e importante do DAX.</p>
+                    <div class="formula-display">// Sintaxe
+                        CALCULATE(expressao, filtro1, filtro2, ...)
+
+                        // Remove filtros existentes
+                        Total Geral = CALCULATE([Total Vendas], ALL(Produtos))
+
+                        // Mantem alguns filtros, remove outros
+                        Total Categoria = CALCULATE([Total Vendas], ALLEXCEPT(Produtos, Produtos[Categoria]))</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Funcoes de Inteligencia Temporal</h2>
+                    <p>Requerem uma tabela de calendario marcada como "Date Table".</p>
+
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Funcao</th>
+                                <th>Descricao</th>
+                                <th>Exemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>TOTALYTD</td>
+                                <td>Acumulado no ano</td>
+                                <td>Vendas desde 1/jan ate data atual</td>
+                            </tr>
+                            <tr>
+                                <td>TOTALQTD</td>
+                                <td>Acumulado no trimestre</td>
+                                <td>Vendas no trimestre corrente</td>
+                            </tr>
+                            <tr>
+                                <td>TOTALMTD</td>
+                                <td>Acumulado no mes</td>
+                                <td>Vendas no mes corrente</td>
+                            </tr>
+                            <tr>
+                                <td>SAMEPERIODLASTYEAR</td>
+                                <td>Mesmo periodo ano anterior</td>
+                                <td>Comparacao YoY</td>
+                            </tr>
+                            <tr>
+                                <td>PREVIOUSMONTH</td>
+                                <td>Mes anterior</td>
+                                <td>Comparacao MoM</td>
+                            </tr>
+                            <tr>
+                                <td>DATEADD</td>
+                                <td>Desloca periodo</td>
+                                <td>Ultimos 12 meses moveis</td>
+                            </tr>
+                            <tr>
+                                <td>DATESYTD</td>
+                                <td>Datas desde inicio do ano</td>
+                                <td>Usado com CALCULATE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="formula-display">// Tabela Calendario (criar no Power Query ou DAX)
+                        Calendario = CALENDAR(DATE(2020,1,1), DATE(2030,12,31))
+
+                        // Adicionar colunas uteis
+                        Ano = YEAR(Calendario[Data])
+                        Mes = MONTH(Calendario[Data])
+                        NomeMes = FORMAT(Calendario[Data], "MMMM")
+                        Trimestre = "Q" & QUARTER(Calendario[Data])</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: Modelo de Dados</h4>
+                        <p>Importe dados de vendas e crie um modelo Star Schema com tabelas Fato e Dimensao.</p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: Medidas DAX</h4>
+                        <p>Crie medidas para: Total Vendas, Vendas YTD, Variacao vs Ano Anterior (%), Ticket Medio.</p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Crie um dashboard completo de vendas com analise temporal (YoY, MoM), ranking de produtos e
+                            segmentacao de clientes.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="../index.html#visualizacao">[<] Voltar ao Modulo</a>
+                            <a href="dashboards-profissionais.html">Proximo: Dashboards Profissionais [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

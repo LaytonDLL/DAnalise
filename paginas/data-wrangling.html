@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Wrangling - Limpeza e Preparacao | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.avancado-theme {
+            background: var(--avancado-light);
+            border-color: var(--avancado);
+        }
+
+        .content-section h2 {
+            color: var(--avancado);
+            border-color: var(--avancado-light);
+        }
+
+        .back-link:hover {
+            color: var(--avancado);
+        }
+
+        .step-list li::before {
+            background: var(--avancado);
+        }
+
+        .table-example th {
+            background: var(--avancado);
+        }
+
+        .formula-display {
+            color: var(--avancado);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--avancado);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#avancado" class="back-link">[<] Voltar para Modulo 4 - Avancado</a>
+
+                <div class="page-title-section avancado-theme">
+                    <h1>Limpeza e Preparacao de Dados (Data Wrangling)</h1>
+                    <p class="subtitle">Aprenda a transformar dados brutos em datasets prontos para analise - a
+                        habilidade que consome 80% do tempo de um analista.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>O que e Data Wrangling?</h2>
+                    <p>Data Wrangling (ou Data Munging) e o processo de transformar dados brutos em formato utilizavel.
+                        Inclui limpeza, tratamento de valores faltantes, padronizacao e enriquecimento.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Realidade do Mercado</h4>
+                        <ul>
+                            <li>80% do tempo de um analista e gasto em preparacao de dados</li>
+                            <li>Dados ruins = analises erradas = decisoes ruins</li>
+                            <li>Quem domina data wrangling se destaca no mercado</li>
+                            <li>Automatizar limpeza gera valor enorme para empresas</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Tratamento de Valores Nulos</h2>
+
+                    <div class="formula-display"># Identificar nulos
+                        df.isnull().sum() # contagem por coluna
+                        df.isnull().sum() / len(df) * 100 # percentual
+
+                        # Visualizar padroes de nulos
+                        import seaborn as sns
+                        sns.heatmap(df.isnull(), cbar=True)
+
+                        # Remover linhas com nulos
+                        df.dropna() # remove qualquer nulo
+                        df.dropna(subset=['coluna1']) # remove se coluna1 for nulo
+                        df.dropna(thresh=5) # mantem se tiver pelo menos 5 nao-nulos
+
+                        # Preencher nulos
+                        df['coluna'].fillna(0) # com valor fixo
+                        df['coluna'].fillna(df['coluna'].mean()) # com media
+                        df['coluna'].fillna(df['coluna'].median()) # com mediana
+                        df['coluna'].fillna(method='ffill') # com valor anterior
+                        df['coluna'].fillna(method='bfill') # com proximo valor
+
+                        # Preencher categoricos com moda
+                        df['categoria'].fillna(df['categoria'].mode()[0])</div>
+
+                    <div class="tip-box">
+                        <h4>[*] Quando Remover vs Preencher?</h4>
+                        <p><strong>Remover:</strong> quando poucos registros tem nulos (&lt;5%).
+                            <strong>Preencher:</strong> quando perder dados e inaceitavel ou quando ha logica de negocio
+                            para o preenchimento.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Tratamento de Duplicatas</h2>
+
+                    <div class="formula-display"># Identificar duplicatas
+                        df.duplicated().sum() # total de duplicatas
+                        df[df.duplicated()] # ver as duplicadas
+                        df[df.duplicated(subset=['id'])] # duplicatas por coluna especifica
+
+                        # Remover duplicatas
+                        df.drop_duplicates() # remove todas
+                        df.drop_duplicates(subset=['id']) # baseado em colunas
+                        df.drop_duplicates(subset=['id'], keep='last') # mantem ultima ocorrencia
+                        df.drop_duplicates(subset=['id'], keep='first') # mantem primeira</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Conversao de Tipos</h2>
+
+                    <div class="formula-display"># Verificar tipos atuais
+                        df.dtypes
+
+                        # Converter tipos
+                        df['coluna'] = df['coluna'].astype(int)
+                        df['coluna'] = df['coluna'].astype(float)
+                        df['coluna'] = df['coluna'].astype(str)
+
+                        # Converter para datetime
+                        df['data'] = pd.to_datetime(df['data'])
+                        df['data'] = pd.to_datetime(df['data'], format='%d/%m/%Y')
+                        df['data'] = pd.to_datetime(df['data'], errors='coerce') # invalidos viram NaT
+
+                        # Converter para numerico (tratando erros)
+                        df['valor'] = pd.to_numeric(df['valor'], errors='coerce')
+
+                        # Converter para categorico (economiza memoria)
+                        df['categoria'] = df['categoria'].astype('category')</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Limpeza de Texto</h2>
+
+                    <div class="formula-display"># Remover espacos
+                        df['nome'] = df['nome'].str.strip() # espacos inicio/fim
+                        df['nome'] = df['nome'].str.replace(' ', ' ') # espacos duplos
+
+                        # Padronizar case
+                        df['nome'] = df['nome'].str.lower() # minusculas
+                        df['nome'] = df['nome'].str.upper() # maiusculas
+                        df['nome'] = df['nome'].str.title() # Primeira Maiuscula
+
+                        # Remover caracteres especiais
+                        df['codigo'] = df['codigo'].str.replace(r'[^a-zA-Z0-9]', '', regex=True)
+
+                        # Extrair partes do texto
+                        df['ddd'] = df['telefone'].str[:2] # primeiros 2 caracteres
+                        df['dominio'] = df['email'].str.split('@').str[1]
+
+                        # Substituir valores
+                        df['status'] = df['status'].replace({
+                        'ativo': 'Ativo',
+                        'ATIVO': 'Ativo',
+                        'inativo': 'Inativo'
+                        })</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Tratamento de Outliers</h2>
+
+                    <div class="formula-display"># Identificar outliers com IQR
+                        Q1 = df['valor'].quantile(0.25)
+                        Q3 = df['valor'].quantile(0.75)
+                        IQR = Q3 - Q1
+                        limite_inferior = Q1 - 1.5 * IQR
+                        limite_superior = Q3 + 1.5 * IQR
+
+                        # Filtrar outliers
+                        df_sem_outliers = df[(df['valor'] >= limite_inferior) & (df['valor'] <= limite_superior)] #
+                            Substituir outliers (capping) df['valor']=df['valor'].clip(lower=limite_inferior,
+                            upper=limite_superior) # Visualizar import matplotlib.pyplot as plt
+                            df['valor'].plot(kind='box' ) plt.show()</div>
+
+                            <div class="example-box warning">
+                                <h4>[!] Cuidado com Outliers</h4>
+                                <p>Nem todo outlier e erro! Verifique se sao valores legitimos (ex: venda grande de
+                                    Black Friday) antes de remover. Documente sempre o tratamento aplicado.</p>
+                            </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Trabalhando com Datas</h2>
+
+                    <div class="formula-display"># Extrair componentes
+                        df['ano'] = df['data'].dt.year
+                        df['mes'] = df['data'].dt.month
+                        df['dia'] = df['data'].dt.day
+                        df['dia_semana'] = df['data'].dt.dayofweek # 0=segunda
+                        df['nome_mes'] = df['data'].dt.month_name()
+                        df['trimestre'] = df['data'].dt.quarter
+                        df['semana_ano'] = df['data'].dt.isocalendar().week
+
+                        # Calcular diferencas
+                        df['dias_desde_compra'] = (pd.Timestamp.now() - df['data_compra']).dt.days
+
+                        # Filtrar por periodo
+                        df[df['data'] >= '2024-01-01']
+                        df[df['data'].between('2024-01-01', '2024-12-31')]
+
+                        # Agrupar por periodo
+                        df.groupby(df['data'].dt.to_period('M'))['vendas'].sum()
+                        df.set_index('data').resample('M')['vendas'].sum()</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Pipeline de Limpeza</h2>
+                    <p>Crie funcoes reutilizaveis para padronizar seu processo:</p>
+
+                    <div class="formula-display">def limpar_dados(df):
+                        """Pipeline de limpeza padrao"""
+
+                        # 1. Copia para nao modificar original
+                        df = df.copy()
+
+                        # 2. Padronizar nomes de colunas
+                        df.columns = df.columns.str.lower().str.replace(' ', '_')
+
+                        # 3. Remover duplicatas
+                        df = df.drop_duplicates()
+
+                        # 4. Tratar nulos
+                        df['valor'] = df['valor'].fillna(0)
+                        df['categoria'] = df['categoria'].fillna('Nao informado')
+
+                        # 5. Converter tipos
+                        df['data'] = pd.to_datetime(df['data'], errors='coerce')
+                        df['valor'] = pd.to_numeric(df['valor'], errors='coerce')
+
+                        # 6. Limpar texto
+                        df['nome'] = df['nome'].str.strip().str.title()
+
+                        # 7. Remover outliers extremos
+                        df = df[df['valor'] < df['valor'].quantile(0.99)] return df # Usar
+                            df_limpo=limpar_dados(df_bruto)</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: Diagnostico</h4>
+                        <p>Carregue um dataset "sujo" e crie relatorio de qualidade: % nulos por coluna, duplicatas,
+                            tipos incorretos.</p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: Limpeza</h4>
+                        <p>Aplique tratamentos: preencha nulos, remova duplicatas, padronize textos, converta tipos.</p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Crie um pipeline de limpeza completo e reutilizavel para dados de vendas com datas, valores e
+                            categorias.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="pandas-numpy.html">[<] Anterior: Pandas e NumPy</a>
+                            <a href="matplotlib-seaborn.html">Proximo: Matplotlib e Seaborn [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

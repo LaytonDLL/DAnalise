@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboards Interativos e Profissionais | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        .page-title-section.visualizacao-theme {
+            background: var(--visualizacao-light);
+            border-color: var(--visualizacao);
+        }
+
+        .content-section h2 {
+            color: var(--visualizacao);
+            border-color: var(--visualizacao-light);
+        }
+
+        .back-link:hover {
+            color: var(--visualizacao);
+        }
+
+        .step-list li::before {
+            background: var(--visualizacao);
+        }
+
+        .table-example th {
+            background: var(--visualizacao);
+        }
+
+        .nav-bottom a:hover {
+            border-color: var(--visualizacao);
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#visualizacao" class="back-link">[<] Voltar para Modulo 3 - Visualizacao</a>
+
+                <div class="page-title-section visualizacao-theme">
+                    <h1>Criar Dashboards Interativos e Profissionais</h1>
+                    <p class="subtitle">Aprenda principios de design, escolha de graficos e tecnicas para criar
+                        dashboards que impressionam e geram acao.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>O que Faz um Dashboard ser Profissional?</h2>
+                    <p>Um dashboard profissional nao e apenas bonito - ele comunica informacoes de forma clara, permite
+                        interacao intuitiva e leva a tomada de decisao. A diferenca entre amador e profissional esta nos
+                        detalhes.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Caracteristicas de um Dashboard Profissional</h4>
+                        <ul>
+                            <li>Hierarquia visual clara (o mais importante chama atencao primeiro)</li>
+                            <li>Paleta de cores consistente e intencional</li>
+                            <li>Graficos apropriados para cada tipo de dado</li>
+                            <li>Interatividade que agrega valor (filtros, drill-down)</li>
+                            <li>Performance rapida (carrega em menos de 3 segundos)</li>
+                            <li>Responsivo para diferentes telas</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Principios de Design Visual</h2>
+
+                    <h3>1. Hierarquia Visual</h3>
+                    <p>O olho humano naturalmente vai do maior para o menor, do mais contrastante para o menos. Use isso
+                        a seu favor.</p>
+                    <ul class="step-list">
+                        <li>KPIs principais no topo, grandes e destacados</li>
+                        <li>Graficos de tendencia no meio</li>
+                        <li>Detalhes e tabelas na parte inferior</li>
+                        <li>Filtros na lateral ou topo</li>
+                    </ul>
+
+                    <h3>2. Regra dos Tercos</h3>
+                    <p>Divida o dashboard em uma grade 3x3. Posicione elementos importantes nas intersecoes.</p>
+
+                    <h3>3. Espacamento e Alinhamento</h3>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Espacamento</h4>
+                            <ul>
+                                <li>Use padding consistente entre elementos</li>
+                                <li>Agrupe elementos relacionados</li>
+                                <li>Espaco em branco nao e desperdicio</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Alinhamento</h4>
+                            <ul>
+                                <li>Alinhe elementos em linhas e colunas</li>
+                                <li>Use grid do Power BI (Ctrl+G)</li>
+                                <li>Evite desalinhamentos de 1-2 pixels</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Escolha do Grafico Certo</h2>
+
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Objetivo</th>
+                                <th>Grafico Recomendado</th>
+                                <th>Evitar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Comparar categorias</td>
+                                <td>Barras horizontais/verticais</td>
+                                <td>Pizza com muitas fatias</td>
+                            </tr>
+                            <tr>
+                                <td>Mostrar tendencia temporal</td>
+                                <td>Linha, Area</td>
+                                <td>Barras para muitos periodos</td>
+                            </tr>
+                            <tr>
+                                <td>Mostrar proporcao (parte/todo)</td>
+                                <td>Pizza (max 5 fatias), Treemap</td>
+                                <td>Pizza com fatias pequenas</td>
+                            </tr>
+                            <tr>
+                                <td>Correlacao entre variaveis</td>
+                                <td>Dispersao (Scatter)</td>
+                                <td>Barras lado a lado</td>
+                            </tr>
+                            <tr>
+                                <td>Distribuicao geografica</td>
+                                <td>Mapa (Filled Map, Shape Map)</td>
+                                <td>Tabelas com estados</td>
+                            </tr>
+                            <tr>
+                                <td>Valores unicos importantes</td>
+                                <td>Cartao (Card), KPI</td>
+                                <td>Graficos para 1 numero</td>
+                            </tr>
+                            <tr>
+                                <td>Progresso vs Meta</td>
+                                <td>Gauge, Bullet Chart</td>
+                                <td>Apenas numeros</td>
+                            </tr>
+                            <tr>
+                                <td>Ranking</td>
+                                <td>Barras ordenadas</td>
+                                <td>Pizza para ranking</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="example-box warning">
+                        <h4>[!] Graficos a Evitar</h4>
+                        <ul>
+                            <li><strong>Pizza 3D:</strong> Distorce proporcoes</li>
+                            <li><strong>Gauge para tudo:</strong> Ocupa muito espaco para pouca informacao</li>
+                            <li><strong>Graficos combo excessivos:</strong> Barras + linhas + areas confundem</li>
+                            <li><strong>Cores do arco-iris:</strong> Use paleta limitada e significativa</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Paleta de Cores</h2>
+
+                    <h3>Principios Basicos</h3>
+                    <ul class="step-list">
+                        <li><strong>Limite a 3-5 cores:</strong> Menos e mais</li>
+                        <li><strong>Use cor com proposito:</strong> Vermelho para negativo, verde para positivo</li>
+                        <li><strong>Considere daltonismo:</strong> 8% dos homens sao daltonicos</li>
+                        <li><strong>Mantenha consistencia:</strong> Mesma cor = mesma coisa em todo dashboard</li>
+                    </ul>
+
+                    <h3>Tipos de Paletas</h3>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Sequencial</h4>
+                            <p>Para dados ordenados (claro a escuro). Ex: intensidade de vendas.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Divergente</h4>
+                            <p>Para dados com ponto medio. Ex: variacao positiva/negativa.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Categorica</h4>
+                            <p>Para categorias distintas. Ex: regioes, produtos.</p>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>[*] Ferramentas para Paletas</h4>
+                        <p>Use <strong>ColorBrewer</strong> ou <strong>Coolors.co</strong> para gerar paletas
+                            harmonicas. No Power BI, salve suas cores no tema personalizado.</p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Interatividade</h2>
+
+                    <h3>Tipos de Interacao</h3>
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Descricao</th>
+                                <th>Quando Usar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Filtro cruzado (Cross-filter)</td>
+                                <td>Selecao em um grafico filtra outros</td>
+                                <td>Exploracao de dados</td>
+                            </tr>
+                            <tr>
+                                <td>Destaque (Highlight)</td>
+                                <td>Selecao destaca sem filtrar</td>
+                                <td>Manter contexto geral</td>
+                            </tr>
+                            <tr>
+                                <td>Drill-down</td>
+                                <td>Navega para nivel mais detalhado</td>
+                                <td>Hierarquias (Ano > Mes > Dia)</td>
+                            </tr>
+                            <tr>
+                                <td>Drill-through</td>
+                                <td>Navega para outra pagina com contexto</td>
+                                <td>Detalhes de um item</td>
+                            </tr>
+                            <tr>
+                                <td>Slicers</td>
+                                <td>Filtros visuais explicitos</td>
+                                <td>Filtros de alto nivel</td>
+                            </tr>
+                            <tr>
+                                <td>Bookmarks</td>
+                                <td>Estados salvos do relatorio</td>
+                                <td>Navegacao, cenarios</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Configurando Interacoes no Power BI</h3>
+                    <ul class="step-list">
+                        <li>Selecione o visual "origem"</li>
+                        <li>Va em Formatar > Editar Interacoes</li>
+                        <li>Escolha para cada visual: Filtrar, Destacar ou Nenhum</li>
+                        <li>Teste a experiencia do usuario</li>
+                    </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2>Layout e Estrutura</h2>
+
+                    <h3>Templates de Layout</h3>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Layout Executivo</h4>
+                            <p>KPIs no topo, 1-2 graficos principais no centro, filtros na lateral. Maximo 6-8 visuais
+                                por pagina.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Layout Analitico</h4>
+                            <p>Mais denso, graficos menores, drill-down disponivel. Para analistas que precisam explorar
+                                dados.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Layout Mobile</h4>
+                            <p>Vertical, KPIs empilhados, graficos simplificados. Configure na view mobile do Power BI.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>Navegacao Multi-Pagina</h3>
+                    <ul class="step-list">
+                        <li>Pagina 1: Overview/Resumo executivo</li>
+                        <li>Pagina 2: Detalhes de Vendas</li>
+                        <li>Pagina 3: Analise de Clientes</li>
+                        <li>Pagina 4: Analise de Produtos</li>
+                        <li>Use botoes de navegacao ou bookmarks</li>
+                    </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+                    <div class="example-box">
+                        <h4>Exercicio 1: Redesign</h4>
+                        <p>Pegue um dashboard feio/confuso e redesenhe aplicando os principios de hierarquia visual e
+                            escolha de graficos.</p>
+                    </div>
+                    <div class="example-box">
+                        <h4>Exercicio 2: Paleta de Cores</h4>
+                        <p>Crie uma paleta de cores corporativa e aplique-a consistentemente em um dashboard.</p>
+                    </div>
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Crie um dashboard executivo de vendas com no maximo 6 visuais, navegacao entre paginas e
+                            drill-through para detalhes.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="powerbi-dax.html">[<] Anterior: Power BI e DAX</a>
+                            <a href="data-storytelling.html">Proximo: Data Storytelling [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>

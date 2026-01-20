@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematica Financeira para Negocios | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle Floating Button -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+    <main class="content-page">
+        <a href="../index.html#fundacao" class="back-link">[<] Voltar para Modulo 1 - Fundacao</a>
+
+                <div class="page-title-section fundacao-theme">
+                    <h1>Aplicar Matematica Financeira Basica</h1>
+                    <p class="subtitle">Domine juros, taxas, analise de investimentos e indicadores financeiros
+                        essenciais para analise de dados.</p>
+                </div>
+
+                <section class="content-section">
+                    <h2>Por que Matematica Financeira?</h2>
+                    <p>A matematica financeira e fundamental para analistas de dados que trabalham com areas como
+                        vendas, financas, controladoria e business intelligence. Entender conceitos como juros, ROI e
+                        payback permite criar analises mais completas e relevantes.</p>
+
+                    <div class="example-box success">
+                        <h4>[+] Aplicacoes no Dia a Dia</h4>
+                        <ul>
+                            <li>Calcular retorno sobre investimentos em marketing</li>
+                            <li>Analisar viabilidade de projetos</li>
+                            <li>Projetar crescimento de vendas</li>
+                            <li>Calcular descontos e margem de lucro</li>
+                            <li>Criar dashboards financeiros</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Juros Simples</h2>
+                    <p>No regime de juros simples, os juros sao calculados sempre sobre o valor inicial (capital).</p>
+
+                    <div class="formula-display">J = C x i x t</div>
+                    <div class="formula-display">M = C + J = C x (1 + i x t)</div>
+
+                    <p>Onde: J = Juros | C = Capital | i = Taxa | t = Tempo | M = Montante</p>
+
+                    <div class="example-box">
+                        <h4>Exemplo</h4>
+                        <p>Capital: R$ 10.000 | Taxa: 2% ao mes | Tempo: 6 meses</p>
+                        <div class="formula-display">J = 10.000 x 0,02 x 6 = R$ 1.200</div>
+                        <div class="formula-display">M = 10.000 + 1.200 = R$ 11.200</div>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Juros Compostos</h2>
+                    <p>No regime de juros compostos, os juros sao calculados sobre o montante acumulado (juros sobre
+                        juros).</p>
+
+                    <div class="formula-display">M = C x (1 + i)^t</div>
+                    <div class="formula-display">J = M - C</div>
+
+                    <div class="example-box">
+                        <h4>Exemplo</h4>
+                        <p>Capital: R$ 10.000 | Taxa: 2% ao mes | Tempo: 6 meses</p>
+                        <div class="formula-display">M = 10.000 x (1,02)^6 = R$ 11.261,62</div>
+                        <div class="formula-display">J = 11.261,62 - 10.000 = R$ 1.261,62</div>
+                        <p><strong>Comparacao:</strong> Juros compostos geraram R$ 61,62 a mais que juros simples!</p>
+                    </div>
+
+                    <h3>Funcoes no Excel</h3>
+                    <div class="formula-display">=VF(taxa; nper; pgto; vp) // Valor Futuro</div>
+                    <div class="formula-display">=VP(taxa; nper; pgto; vf) // Valor Presente</div>
+                    <div class="formula-display">=TAXA(nper; pgto; vp; vf) // Taxa de juros</div>
+                    <div class="formula-display">=NPER(taxa; pgto; vp; vf) // Numero de periodos</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Porcentagem e Variacao</h2>
+
+                    <h3>Variacao Percentual</h3>
+                    <div class="formula-display">Variacao % = ((Valor Final - Valor Inicial) / Valor Inicial) x 100
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Exemplo: Crescimento de Vendas</h4>
+                        <p>Janeiro: R$ 50.000 | Fevereiro: R$ 58.000</p>
+                        <div class="formula-display">Crescimento = ((58.000 - 50.000) / 50.000) x 100 = 16%</div>
+                    </div>
+
+                    <h3>Aumento e Desconto</h3>
+                    <table class="table-example">
+                        <thead>
+                            <tr>
+                                <th>Operacao</th>
+                                <th>Formula</th>
+                                <th>Exemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Aumento de X%</td>
+                                <td>Valor x (1 + X/100)</td>
+                                <td>100 + 20% = 100 x 1,20 = 120</td>
+                            </tr>
+                            <tr>
+                                <td>Desconto de X%</td>
+                                <td>Valor x (1 - X/100)</td>
+                                <td>100 - 15% = 100 x 0,85 = 85</td>
+                            </tr>
+                            <tr>
+                                <td>Margem sobre custo</td>
+                                <td>Custo x (1 + Margem)</td>
+                                <td>Custo 80 + 25% = 100</td>
+                            </tr>
+                            <tr>
+                                <td>Margem sobre venda</td>
+                                <td>Venda x Margem</td>
+                                <td>Venda 100 x 20% = 20 de lucro</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="content-section">
+                    <h2>Indicadores de Investimento</h2>
+
+                    <h3>ROI - Retorno sobre Investimento</h3>
+                    <div class="formula-display">ROI = ((Ganho - Investimento) / Investimento) x 100</div>
+
+                    <div class="example-box">
+                        <h4>Exemplo: Campanha de Marketing</h4>
+                        <p>Investimento: R$ 5.000 | Receita gerada: R$ 15.000</p>
+                        <div class="formula-display">ROI = ((15.000 - 5.000) / 5.000) x 100 = 200%</div>
+                        <p>Para cada R$ 1 investido, retornaram R$ 2 de lucro.</p>
+                    </div>
+
+                    <h3>Payback - Tempo de Retorno</h3>
+                    <div class="formula-display">Payback = Investimento Inicial / Fluxo de Caixa Mensal</div>
+
+                    <div class="example-box">
+                        <h4>Exemplo</h4>
+                        <p>Investimento: R$ 24.000 | Lucro mensal: R$ 3.000</p>
+                        <div class="formula-display">Payback = 24.000 / 3.000 = 8 meses</div>
+                    </div>
+
+                    <h3>Margem de Lucro</h3>
+                    <div class="formula-display">Margem Bruta = (Lucro Bruto / Receita) x 100</div>
+                    <div class="formula-display">Margem Liquida = (Lucro Liquido / Receita) x 100</div>
+                </section>
+
+                <section class="content-section">
+                    <h2>VPL e TIR</h2>
+
+                    <h3>VPL - Valor Presente Liquido</h3>
+                    <p>Calcula o valor presente de fluxos de caixa futuros, descontados a uma taxa.</p>
+                    <div class="formula-display">=VPL(taxa; valor1; valor2; ...) + Investimento_Inicial</div>
+                    <p><strong>Regra:</strong> VPL > 0 = Projeto viavel | VPL < 0=Projeto inviavel</p>
+
+                            <h3>TIR - Taxa Interna de Retorno</h3>
+                            <p>E a taxa que faz o VPL ser igual a zero. Representa a rentabilidade do projeto.</p>
+                            <div class="formula-display">=TIR(valores; estimativa)</div>
+                            <p><strong>Regra:</strong> TIR > Taxa minima de atratividade = Projeto viavel</p>
+
+                            <div class="example-box">
+                                <h4>Exemplo Pratico</h4>
+                                <p>Investimento: -R$ 100.000 (ano 0)</p>
+                                <p>Fluxos: R$ 30.000 (ano 1), R$ 40.000 (ano 2), R$ 50.000 (ano 3), R$ 35.000 (ano 4)
+                                </p>
+                                <div class="formula-display">=VPL(10%; 30000; 40000; 50000; 35000) - 100000</div>
+                                <p>Se VPL for positivo e TIR maior que 10%, o projeto e viavel!</p>
+                            </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>Exercicios Praticos</h2>
+
+                    <div class="example-box">
+                        <h4>Exercicio 1: Juros Compostos</h4>
+                        <p>Calcule o montante de R$ 5.000 aplicados a 1,5% ao mes por 12 meses.</p>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Exercicio 2: ROI</h4>
+                        <p>Uma campanha custou R$ 8.000 e gerou R$ 28.000. Qual o ROI?</p>
+                    </div>
+
+                    <div class="example-box">
+                        <h4>Exercicio 3: VPL</h4>
+                        <p>Avalie: Investimento de R$ 50.000, retornos de R$ 15.000/ano por 4 anos, taxa 12%.</p>
+                    </div>
+
+                    <div class="example-box success">
+                        <h4>Desafio</h4>
+                        <p>Crie uma planilha de analise de viabilidade de projeto com calculo de VPL, TIR e Payback.</p>
+                    </div>
+                </section>
+
+                <nav class="nav-bottom">
+                    <a href="estatistica-descritiva.html">[<] Anterior: Estatistica</a>
+                            <a href="pensamento-analitico.html">Proximo: Pensamento Analitico [>]</a>
+                </nav>
+    </main>
+    <script src="subpage-script.js"></script>
+</body>
+
+</html>
