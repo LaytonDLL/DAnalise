@@ -1,335 +1,58 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso Completo de Analista de Dados | DAnalise</title>
-    <meta name="description"
-        content="Aprenda analise de dados do zero ao avancado. Excel, SQL, Power BI, Python e construcao de portfolio profissional.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="assets/logo-circle.png" type="image/png">
+    <title>Meus Projetos | Hub Central</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landing.css">
 </head>
 
 <body>
-    <!-- SIDEBAR NAVIGATION -->
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <a href="#home" class="logo" data-navigate="home">
-                <img src="assets/logo-circle.png" alt="DAnalise Logo" class="logo-img">
-                <span>DAnalise</span>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+
+    <div class="container">
+        <header>
+            <h1>Meus Projetos</h1>
+            <p class="subtitle">Explorando dados, inteligência artificial e desenvolvimento web.</p>
+        </header>
+
+        <div class="projects-grid">
+            <!-- Project 1: Analise de Dados -->
+            <a href="curso.html" class="project-card">
+                <div class="card-icon">📊</div>
+                <h3>Análise de Dados</h3>
+                <p class="card-desc">Plataforma de cursos completa cobrindo Excel, SQL, Power BI, Python e construção de
+                    portfólio.</p>
             </a>
-            <div class="header-actions">
-                <button class="sidebar-toggle" id="sidebarToggle">=</button>
-            </div>
+
+            <!-- Project 2: AngleOne -->
+            <a href="https://angleone1.netlify.app/" target="_blank" class="project-card">
+                <div class="card-icon">📐</div>
+                <h3>AngleOne</h3>
+                <p class="card-desc">Aplicação web moderna hospedada na Netlify. Explore funcionalidades avançadas de
+                    front-end.</p>
+            </a>
+
+            <!-- Project 3: AxyPrompt -->
+            <a href="https://axyprompt.netlify.app/" target="_blank" class="project-card">
+                <div class="card-icon">🤖</div>
+                <h3>AxyPrompt</h3>
+                <p class="card-desc">Ferramenta de engenharia de prompt e IA. Otimize seus fluxos de trabalho com IA
+                    generativa.</p>
+            </a>
+
+            <!-- Project 4: DF2 -->
+            <a href="https://df2.netlify.app/" target="_blank" class="project-card">
+                <div class="card-icon">🎮</div>
+                <h3>DF2 Experimental</h3>
+                <p class="card-desc">Experimento de jogo em React com assets e sprites animados. Testando limites do web
+                    gaming.</p>
+            </a>
         </div>
-
-        <nav class="sidebar-nav">
-            <div class="nav-section">
-                <span class="nav-section-title">NAVEGACAO</span>
-                <a href="#home" class="nav-item active" data-navigate="home">
-
-                    <span class="nav-text">Inicio</span>
-                </a>
-            </div>
-
-            <div class="nav-section">
-                <span class="nav-section-title">MODULOS DO CURSO</span>
-
-                <a href="#fundacao" class="nav-item modulo-item fundacao" data-navigate="fundacao">
-
-                    <span class="nav-text">
-                        <span class="nav-label">Modulo 1</span>
-                        Fundacao
-                    </span>
-                    <span class="nav-badge">Excel e Estatistica</span>
-                </a>
-
-                <a href="#coleta" class="nav-item modulo-item coleta" data-navigate="coleta">
-
-                    <span class="nav-text">
-                        <span class="nav-label">Modulo 2</span>
-                        Coleta
-                    </span>
-                    <span class="nav-badge">SQL e Databases</span>
-                </a>
-
-                <a href="#visualizacao" class="nav-item modulo-item visualizacao" data-navigate="visualizacao">
-
-                    <span class="nav-text">
-                        <span class="nav-label">Modulo 3</span>
-                        Visualizacao
-                    </span>
-                    <span class="nav-badge">Power BI e Tableau</span>
-                </a>
-
-                <a href="#avancado" class="nav-item modulo-item avancado" data-navigate="avancado">
-
-                    <span class="nav-text">
-                        <span class="nav-label">Modulo 4</span>
-                        Avancado
-                    </span>
-                    <span class="nav-badge">Python e Pandas</span>
-                </a>
-
-                <a href="#portfolio" class="nav-item modulo-item portfolio" data-navigate="portfolio">
-
-                    <span class="nav-text">
-                        <span class="nav-label">Modulo 5</span>
-                        Portfolio
-                    </span>
-                    <span class="nav-badge">Projetos Reais</span>
-                </a>
-            </div>
-        </nav>
-
-
-    </aside>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Alternar Tema">
-        <img src="assets/moon-white.png" alt="Tema" id="theme-icon">
-    </button>
-
-    <!-- MAIN CONTENT AREA -->
-    <main class="main-content" id="mainContent">
-        <!-- HOME / DASHBOARD -->
-        <section id="home" class="page-section active">
-            <div class="page-container">
-                <!-- Welcome Header -->
-                <div class="welcome-header">
-                    <div class="welcome-text">
-
-                        <h1>Bem-vindo ao <span class="gradient-text">DAnalise</span></h1>
-                        <p>Sua jornada para se tornar um Analista de Dados profissional comeca aqui. Domine Excel, SQL,
-                            Power BI, Python e construa um portfolio impressionante.</p>
-                        <div style="margin-top: 2rem;">
-                            <button class="btn btn-primary btn-large" data-navigate="fundacao">
-                                Comecar Agora
-                            </button>
-                        </div>
-                    </div>
-                    <div class="welcome-stats">
-                        <div class="stat-card">
-                            <span class="stat-number">5</span>
-                            <span class="stat-label">Modulos</span>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                <!-- Skills Section -->
-                <div class="section-block">
-                    <div class="section-header-inline">
-                        <h2>O Que Voce Vai Aprender</h2>
-                        <p>Habilidades mais requisitadas no mercado de analise de dados</p>
-                    </div>
-
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="skill-icon" style="background: linear-gradient(135deg, #217346, #2e8b57);">XL
-                            </div>
-                            <h4>Excel Avancado</h4>
-                            <p>PROCV, Tabelas Dinamicas, Graficos profissionais e automacao com VBA basico</p>
-                            <div class="skill-level">
-                                <span>Nivel: Iniciante a Avancado</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="skill-icon" style="background: linear-gradient(135deg, #f1c40f, #e67e22);">SQL
-                            </div>
-                            <h4>SQL</h4>
-                            <p>SELECT, JOINs, Subqueries, Window Functions e otimizacao de queries</p>
-                            <div class="skill-level">
-                                <span>Nivel: Zero a Avancado</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="skill-icon" style="background: linear-gradient(135deg, #f2c811, #e8a500);">BI
-                            </div>
-                            <h4>Power BI</h4>
-                            <p>Dashboards interativos, DAX, relacionamentos e publicacao de relatorios</p>
-                            <div class="skill-level">
-                                <span>Nivel: Zero a Profissional</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="skill-icon" style="background: linear-gradient(135deg, #3776ab, #ffd43b);">Py
-                            </div>
-                            <h4>Python + Pandas</h4>
-                            <p>Automacao, analise exploratoria, limpeza de dados e visualizacoes</p>
-                            <div class="skill-level">
-                                <span>Nivel: Zero a Intermediario</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="skill-icon" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">ST
-                            </div>
-                            <h4>Storytelling</h4>
-                            <p>Transforme dados em narrativas convincentes que geram acao e decisoes</p>
-                            <div class="skill-level">
-                                <span>Nivel: Intermediario a Avancado</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="skill-icon" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">PC
-                            </div>
-                            <h4>Pensamento Critico</h4>
-                            <p>Metodologia CRISP-DM, resolucao de problemas e tomada de decisao baseada em dados</p>
-                            <div class="skill-level">
-                                <span>Nivel: Essencial</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <footer class="home-footer">
-                    <p>© 2025 DAnalise - Transformando dados em futuro.</p>
-                </footer>
-            </div>
-        </section>
-
-        <!-- MODULO 1: FUNDACAO -->
-        <section id="fundacao" class="page-section">
-            <div class="page-container">
-                <div class="module-header fundacao">
-                    <nav class="module-breadcrumb">
-                        <a href="#home" data-navigate="home">Inicio</a>
-                        <span>/</span>
-                        <span>Modulo 1</span>
-                    </nav>
-                    <span class="module-number">Modulo 1</span>
-                    <div class="module-title-block">
-                        <h1>Fundacao: Excel e Estatistica</h1>
-                        <p>A base solida para qualquer analista de dados. Domine as ferramentas que 90% das empresas
-                            usam diariamente.</p>
-                    </div>
-
-                </div>
-
-                <div class="module-content" id="fundacao-content">
-                    <!-- Conteudo injetado via fundacao.js -->
-                </div>
-            </div>
-        </section>
-
-        <!-- MODULO 2: COLETA -->
-        <section id="coleta" class="page-section">
-            <div class="page-container">
-                <div class="module-header coleta">
-                    <nav class="module-breadcrumb">
-                        <a href="#home" data-navigate="home">Inicio</a>
-                        <span>/</span>
-                        <span>Modulo 2</span>
-                    </nav>
-                    <span class="module-number">Modulo 2</span>
-                    <div class="module-title-block">
-                        <h1>Coleta: SQL e Banco de Dados</h1>
-                        <p>Aprenda a extrair dados de qualquer banco de dados. SQL e a linguagem universal para analise
-                            de dados.</p>
-                    </div>
-
-                </div>
-
-                <div class="module-content" id="coleta-content">
-                    <!-- Conteudo injetado via coleta.js -->
-                </div>
-            </div>
-        </section>
-
-        <!-- MODULO 3: VISUALIZACAO -->
-        <section id="visualizacao" class="page-section">
-            <div class="page-container">
-                <div class="module-header visualizacao">
-                    <nav class="module-breadcrumb">
-                        <a href="#home" data-navigate="home">Inicio</a>
-                        <span>/</span>
-                        <span>Modulo 3</span>
-                    </nav>
-                    <span class="module-number">Modulo 3</span>
-                    <div class="module-title-block">
-                        <h1>Visualizacao: Power BI e Storytelling</h1>
-                        <p>Transforme dados em historias visuais que geram impacto e tomada de decisao.</p>
-                    </div>
-
-                </div>
-
-                <div class="module-content" id="visualizacao-content">
-                    <!-- Conteudo injetado via visualizacao.js -->
-                </div>
-            </div>
-        </section>
-
-        <!-- MODULO 4: AVANCADO -->
-        <section id="avancado" class="page-section">
-            <div class="page-container">
-                <div class="module-header avancado">
-                    <nav class="module-breadcrumb">
-                        <a href="#home" data-navigate="home">Inicio</a>
-                        <span>/</span>
-                        <span>Modulo 4</span>
-                    </nav>
-                    <span class="module-number">Modulo 4</span>
-                    <div class="module-title-block">
-                        <h1>Avancado: Python e Pandas</h1>
-                        <p>Automacao, manipulacao de grandes volumes de dados e analises que vao alem do Excel.</p>
-                    </div>
-
-                </div>
-
-                <div class="module-content" id="avancado-content">
-                    <!-- Conteudo injetado via avancado.js -->
-                </div>
-            </div>
-        </section>
-
-        <!-- MODULO 5: PORTFOLIO -->
-        <section id="portfolio" class="page-section">
-            <div class="page-container">
-                <div class="module-header portfolio">
-                    <nav class="module-breadcrumb">
-                        <a href="#home" data-navigate="home">Inicio</a>
-                        <span>/</span>
-                        <span>Modulo 5</span>
-                    </nav>
-                    <span class="module-number">Modulo 5</span>
-                    <div class="module-title-block">
-                        <h1>Portfolio: Projetos Reais</h1>
-                        <p>Construa um portfolio que impressiona recrutadores e conquiste sua vaga como Analista de
-                            Dados.</p>
-                    </div>
-
-                </div>
-
-                <div class="module-content" id="portfolio-content">
-                    <!-- Conteudo injetado via portfolio.js -->
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- BACK TO TOP -->
-    <div class="back-to-top" id="backToTop">^</div>
-
-    <!-- MOBILE OVERLAY -->
-    <div class="mobile-overlay" id="mobileOverlay"></div>
-
-    <!-- SCRIPTS -->
-    <script src="script.js"></script>
-    <script src="modulos/fundacao.js"></script>
-    <script src="modulos/coleta.js"></script>
-    <script src="modulos/visualizacao.js"></script>
-    <script src="modulos/avancado.js"></script>
-    <script src="modulos/portfolio.js"></script>
+    </div>
 </body>
 
 </html>

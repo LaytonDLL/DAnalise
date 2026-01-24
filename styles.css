@@ -607,7 +607,15 @@ a {
     /* Mais escuro */
     border: 1px solid var(--glass-border);
     border-radius: 16px;
-    padding: 1.5rem 2.5rem;
+    padding: 2rem 4rem;
+    /* Increased padding */
+    min-width: 300px;
+    /* Force wider container */
+    display: flex;
+    flex-direction: column;
+    /* Stack number and label */
+    align-items: center;
+    justify-content: center;
     backdrop-filter: blur(8px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
@@ -634,6 +642,14 @@ a {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .home-footer {
