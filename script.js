@@ -1,3 +1,107 @@
+// ===== PROGRESS SYSTEM =====
+window.initModuleProgress = function(moduleId) {
+    // Find all module cards in the current view
+    const cards = document.querySelectorAll(`#${moduleId}-content .hub-card`);
+    
+    cards.forEach((card, index) => {
+        // Create unique ID for this lesson based on module and index
+        const lessonId = `${moduleId}-lesson-${index}`;
+        
+        // Create Toggle Button
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'progress-toggle';
+        toggleBtn.innerHTML = `
+            <div class="checkbox-circle"></div>
+            <span>Marcar como Visto</span>
+        `;
+        
+        // Check saved state
+        const isDone = localStorage.getItem(lessonId) === 'true';
+        if (isDone) {
+            toggleBtn.classList.add('completed');
+            toggleBtn.querySelector('.checkbox-circle').innerHTML = '✓';
+            toggleBtn.querySelector('span').textContent = 'Concluído';
+        }
+
+        // Add Click Listener
+        toggleBtn.addEventListener('click', () => {
+            const currentState = toggleBtn.classList.contains('completed');
+            const newState = !currentState;
+            
+            if (newState) {
+                toggleBtn.classList.add('completed');
+                toggleBtn.querySelector('.checkbox-circle').innerHTML = '✓';
+                toggleBtn.querySelector('span').textContent = 'Concluído';
+                localStorage.setItem(lessonId, 'true');
+            } else {
+                toggleBtn.classList.remove('completed');
+                toggleBtn.querySelector('.checkbox-circle').innerHTML = '';
+                toggleBtn.querySelector('span').textContent = 'Marcar como Visto';
+                localStorage.setItem(lessonId, 'false');
+            }
+            
+            // Trigger animation
+            toggleBtn.animate([
+                { transform: 'scale(1)' },
+                { transform: 'scale(0.95)' },
+                { transform: 'scale(1)' }
+            ], {
+                duration: 200
+            });
+        });
+
+        // Append to card actions
+        const actionsDiv = card.querySelector('.hub-actions');
+        if (actionsDiv) {
+            actionsDiv.appendChild(toggleBtn);
+        }
+    });
+};
+
+/* ===== CSS INJECTION FOR PROGRESS BUTTONS ===== */
+const style = document.createElement('style');
+style.textContent = `
+    .progress-toggle {
+        background: transparent;
+        border: 1px solid var(--text-muted);
+        color: var(--text-muted);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+    }
+    
+    .progress-toggle:hover {
+        background: rgba(255,255,255,0.05);
+        border-color: var(--text-secondary);
+        color: var(--text-secondary);
+    }
+    
+    .progress-toggle.completed {
+        background: rgba(39, 174, 96, 0.2);
+        border-color: #27ae60;
+        color: #2ecc71;
+    }
+    
+    .checkbox-circle {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid currentColor;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        line-height: 1;
+    }
+`;
+document.head.appendChild(style);
+
 // ===== NAVEGAÇÃO E GERENCIAMENTO DE MÓDULOS =====
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -65,6 +169,9 @@ function initNavigation() {
 
         // Se encontrou e não é um link com href real que deve navegar normalmente (opcional, aqui assumimos SPA)
         if (targetEl) {
+            // Check if it's the progress button, if so, ignore navigation
+            if (targetEl.classList.contains('progress-toggle')) return;
+            
             e.preventDefault();
             const target = targetEl.getAttribute('data-navigate');
             if (target) navigateTo(target);

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL do Basico ao Avancado | DAnalise</title>
+    <title>SQL Masterclass: A Ciência dos Dados | DAnalise</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
@@ -54,7 +54,6 @@
 </head>
 
 <body>
-    <!-- Theme Toggle Floating Button -->
     <div id="subpage-theme-toggle" class="theme-toggle"
         style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
         <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
@@ -63,262 +62,136 @@
         <a href="../index.html#coleta" class="back-link">[<] Voltar para Modulo 2 - Coleta</a>
 
                 <div class="page-title-section coleta-theme">
-                    <h1>Dominar SQL do Basico ao Avancado</h1>
-                    <p class="subtitle">Aprenda SQL completo: SELECT, JOINs, Subqueries, CTEs e Window Functions para
-                        analise de dados profissional.</p>
+                    <h1>SQL Masterclass: Dominando a Linguagem de Dados</h1>
+                    <p class="subtitle">Não aprenda apenas comandos. Entenda a arquitetura relacional, a ordem lógica de
+                        execução e como otimizar consultas em escala de Big Data.</p>
                 </div>
 
+                <!-- CAPÍTULO 1: TEORIA DOS CONJUNTOS -->
                 <section class="content-section">
-                    <h2>Por que SQL e Essencial?</h2>
-                    <p>SQL (Structured Query Language) e a linguagem padrao para comunicacao com bancos de dados
-                        relacionais. Praticamente toda empresa armazena dados em bancos de dados, e saber SQL e
-                        requisito obrigatorio para qualquer analista de dados.</p>
+                    <h2>1. Pensando em Conjuntos (Set Theory)</h2>
+                    <p>O maior erro de quem vem do Excel para o SQL é continuar pensando em "linhas" e "células". SQL
+                        não trata uma linha individualmente até o último momento. SQL trata <strong>Conjuntos
+                            Matemáticos</strong>.</p>
 
-                    <div class="example-box success">
-                        <h4>[+] Beneficios de Dominar SQL</h4>
-                        <ul>
-                            <li>Requisito em 100% das vagas de analista de dados</li>
-                            <li>Acesso direto a fonte de dados da empresa</li>
-                            <li>Performance superior a exportar para Excel</li>
-                            <li>Base para ferramentas de BI como Power BI e Tableau</li>
-                        </ul>
+                    <p>Imagine que você tem dois círculos (Diagrama de Venn):</p>
+                    <ul>
+                        <li><strong>Conjunto A:</strong> Clientes que compraram em 2024.</li>
+                        <li><strong>Conjunto B:</strong> Clientes que moram em São Paulo.</li>
+                    </ul>
+                    <p>Quando fazemos uma query, estamos perguntando ao banco: "Qual é a interseção desses círculos?"
+                        (INNER JOIN) ou "Quem está no círculo A mas não no B?" (LEFT JOIN com filtro NULL).</p>
+
+                    <div class="curiosity-box">
+                        <h4>💡 A Matemática Relacional</h4>
+                        <p>O SQL foi baseada na "Álgebra Relacional" criada pelo Dr. Edgar Codd na IBM nos anos 70. Ele
+                            provou matematicamente que qualquer pergunta sobre dados pode ser respondida usando apenas
+                            operações de conjuntos (União, Diferença, Produto Cartesiano, Seleção e Projeção). Cada
+                            <code>SELECT</code> que você escreve é uma equação matemática disfarçada de inglês.</p>
                     </div>
                 </section>
 
+                <!-- CAPÍTULO 2: A ORDEM DE EXECUÇÃO -->
                 <section class="content-section">
-                    <h2>Comandos Fundamentais</h2>
+                    <h2>2. A Ordem Secreta de Execução</h2>
+                    <p>Você escreve: <code>SELECT ... FROM ... WHERE</code>. O computador lê em uma ordem completamente
+                        diferente. Entender isso é a diferença entre um sênior e um júnior.</p>
 
-                    <h3>SELECT - Consultando Dados</h3>
-                    <p>O comando SELECT e a base de toda consulta SQL. Ele permite recuperar dados de uma ou mais
-                        tabelas.</p>
-                    <div class="formula-display">SELECT coluna1, coluna2 FROM tabela WHERE condicao ORDER BY coluna;
+                    <div class="example-box warning">
+                        <h4>A Verdadeira Ordem que o Banco Executa:</h4>
+                        <ol style="margin-left: 20px;">
+                            <li><strong>FROM & JOIN:</strong> "Primeiro, pegue todas as tabelas e junte os dados
+                                brutos." (Cria o dataset inicial no disco/memória).</li>
+                            <li><strong>WHERE:</strong> "Agora filtre as linhas indesejadas IMEDIATAMENTE para
+                                economizar memória." (Aqui sai o lixo).</li>
+                            <li><strong>GROUP BY:</strong> "Agrupe o que sobrou em categorias."</li>
+                            <li><strong>HAVING:</strong> "Filtre os grupos consolidados." (Ex: Só quero grupos com soma
+                                > 1000).</li>
+                            <li><strong>SELECT:</strong> "Só AGORA escolha quais colunas mostrar."</li>
+                            <li><strong>ORDER BY:</strong> "Por fim, ordene o resultado para apresentar."</li>
+                            <li><strong>LIMIT:</strong> "Corte para mostrar apenas N linhas."</li>
+                        </ol>
                     </div>
 
-                    <h3>Clausulas Essenciais</h3>
-                    <table class="table-example">
-                        <thead>
-                            <tr>
-                                <th>Clausula</th>
-                                <th>Funcao</th>
-                                <th>Exemplo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>SELECT</td>
-                                <td>Define colunas a retornar</td>
-                                <td>SELECT nome, salario</td>
-                            </tr>
-                            <tr>
-                                <td>FROM</td>
-                                <td>Define a tabela origem</td>
-                                <td>FROM funcionarios</td>
-                            </tr>
-                            <tr>
-                                <td>WHERE</td>
-                                <td>Filtra registros</td>
-                                <td>WHERE salario > 5000</td>
-                            </tr>
-                            <tr>
-                                <td>ORDER BY</td>
-                                <td>Ordena resultados</td>
-                                <td>ORDER BY nome ASC</td>
-                            </tr>
-                            <tr>
-                                <td>GROUP BY</td>
-                                <td>Agrupa registros</td>
-                                <td>GROUP BY departamento</td>
-                            </tr>
-                            <tr>
-                                <td>HAVING</td>
-                                <td>Filtra grupos</td>
-                                <td>HAVING COUNT(*) > 10</td>
-                            </tr>
-                            <tr>
-                                <td>LIMIT</td>
-                                <td>Limita quantidade</td>
-                                <td>LIMIT 100</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <p><strong>Por que isso importa?</strong><br>
+                        Você já tentou usar um apelido (alias) criado no SELECT dentro do WHERE e deu erro? Ex:
+                        <code>SELECT valor * 2 AS dobro ... WHERE dobro > 10</code>. Isso falha porque o WHERE acontece
+                        no passo 2, e o SELECT (que cria o apelido "dobro") só acontece no passo 5. Para o WHERE,
+                        "dobro" ainda não existe no tempo. Lógica pura!</p>
                 </section>
 
+                <!-- CAPÍTULO 3: A CIÊNCIA DOS JOINS -->
                 <section class="content-section">
-                    <h2>JOINs - Combinando Tabelas</h2>
-                    <p>JOINs permitem combinar dados de multiplas tabelas em uma unica consulta.</p>
+                    <h2>3. A Ciência dos JOINs</h2>
+                    <p>Um JOIN não é mágica. É um processo mecânico de comparação. Imagine duas listas de chamada de
+                        alunos de turmas diferentes.</p>
+
+                    <h3>Nested Loop Join (O Laço Aninhado)</h3>
+                    <p>É assim que o banco pensa na forma mais bruta:</p>
+                    <div class="formula-display">
+                        Para cada linha da Tabela A (Clientes):
+                        Pegue o ID do Cliente.
+                        Percorra TODA a Tabela B (Pedidos) procurando esse ID.
+                        Se achar, conecte e retorne.
+                        Se não achar, descarte (no Inner Join).
+                    </div>
+                    <p>Isso explica por que JOINs são pesados. Se você tem 1.000 clientes e 1.000 pedidos, o banco pode
+                        fazer teoricamente 1 milhão de comparações (1.000 x 1.000). É aqui que entram os
+                        <strong>Índices</strong> (Indexes), que funcionam como o índice remissivo de um livro,
+                        permitindo pular direto para a página certa sem ler o livro todo.</p>
+                </section>
+
+                <!-- CAPÍTULO 4: ESTUDOS DE CASO AVANÇADOS -->
+                <section class="content-section">
+                    <h2>4. Otimização de Queries (Performance Tuning)</h2>
+                    <p>Em entrevistas para grandes empresas (Uber, iFood, Nubank), não basta a query funcionar. Ela tem
+                        que ser rápida e barata.</p>
 
                     <div class="comparison-grid">
                         <div class="comparison-card">
-                            <h4>INNER JOIN</h4>
-                            <p>Retorna apenas registros com correspondencia em ambas tabelas.</p>
-                            <div class="formula-display">SELECT * FROM A INNER JOIN B ON A.id = B.a_id</div>
+                            <h4>❌ O Jeito Lento (SARGable Violation)</h4>
+                            <div class="formula-display">
+                                WHERE YEAR(data_venda) = 2023
+                            </div>
+                            <p><strong>O Problema:</strong> Ao aplicar uma função <code>YEAR()</code> na coluna, o banco
+                                precisa calcular isso para CADA uma das 1 milhão de linhas antes de filtrar. Ele ignora
+                                o índice.</p>
                         </div>
                         <div class="comparison-card">
-                            <h4>LEFT JOIN</h4>
-                            <p>Retorna todos de A + correspondencias de B (ou NULL).</p>
-                            <div class="formula-display">SELECT * FROM A LEFT JOIN B ON A.id = B.a_id</div>
+                            <h4>✅ O Jeito Rápido (SARGable)</h4>
+                            <div class="formula-display">
+                                WHERE data_venda >= '2023-01-01'
+                                AND data_venda <= '2023-12-31' </div>
+                                    <p><strong>A Solução:</strong> Comparar a coluna bruta direto com um valor. O banco
+                                        usa o índice e pula direto para os dados de 2023, ignorando o resto.</p>
+                            </div>
                         </div>
-                        <div class="comparison-card">
-                            <h4>RIGHT JOIN</h4>
-                            <p>Retorna todos de B + correspondencias de A (ou NULL).</p>
-                            <div class="formula-display">SELECT * FROM A RIGHT JOIN B ON A.id = B.a_id</div>
-                        </div>
-                        <div class="comparison-card">
-                            <h4>FULL JOIN</h4>
-                            <p>Retorna todos os registros de ambas tabelas.</p>
-                            <div class="formula-display">SELECT * FROM A FULL JOIN B ON A.id = B.a_id</div>
-                        </div>
-                    </div>
-
-                    <div class="example-box">
-                        <h4>Exemplo Pratico: Vendas com Clientes</h4>
-                        <div class="formula-display">SELECT c.nome, v.data_venda, v.valor
-                            FROM clientes c
-                            INNER JOIN vendas v ON c.id = v.cliente_id
-                            WHERE v.data_venda >= '2024-01-01'
-                            ORDER BY v.valor DESC;</div>
-                    </div>
                 </section>
 
                 <section class="content-section">
-                    <h2>Subqueries e CTEs</h2>
+                    <h2>5. Desafio de Lógica SQL</h2>
+                    <p>Problema: Encontre os usuários que compraram o item A e B, mas NÃO compraram o item C.</p>
 
-                    <h3>Subqueries (Subconsultas)</h3>
-                    <p>Uma query dentro de outra query. Uteis para calculos intermediarios.</p>
-                    <div class="formula-display">SELECT * FROM funcionarios
-                        WHERE salario > (SELECT AVG(salario) FROM funcionarios);</div>
-
-                    <h3>CTEs (Common Table Expressions)</h3>
-                    <p>Permitem criar "tabelas temporarias" para consultas mais legiveis.</p>
-                    <div class="formula-display">WITH vendas_mensais AS (
-                        SELECT MONTH(data) as mes, SUM(valor) as total
-                        FROM vendas
-                        GROUP BY MONTH(data)
-                        )
-                        SELECT mes, total,
-                        total - LAG(total) OVER (ORDER BY mes) as variacao
-                        FROM vendas_mensais;</div>
-
-                    <div class="tip-box">
-                        <h4>[*] Quando usar cada um?</h4>
-                        <p>Use <strong>subqueries</strong> para calculos simples e pontuais. Use <strong>CTEs</strong>
-                            quando precisar reutilizar o resultado varias vezes ou para melhorar a legibilidade de
-                            queries complexas.</p>
-                    </div>
-                </section>
-
-                <section class="content-section">
-                    <h2>Window Functions</h2>
-                    <p>Window Functions permitem calculos sobre grupos de linhas relacionadas sem perder o detalhe de
-                        cada linha. Sao essenciais para analises avancadas.</p>
-
-                    <h3>Sintaxe Basica</h3>
-                    <div class="formula-display">funcao() OVER (PARTITION BY coluna ORDER BY coluna)</div>
-
-                    <h3>Principais Window Functions</h3>
-                    <table class="table-example">
-                        <thead>
-                            <tr>
-                                <th>Funcao</th>
-                                <th>Descricao</th>
-                                <th>Exemplo de Uso</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>ROW_NUMBER()</td>
-                                <td>Numero sequencial unico</td>
-                                <td>Ranking de vendedores</td>
-                            </tr>
-                            <tr>
-                                <td>RANK()</td>
-                                <td>Ranking com empates (pula posicoes)</td>
-                                <td>Classificacao de produtos</td>
-                            </tr>
-                            <tr>
-                                <td>DENSE_RANK()</td>
-                                <td>Ranking com empates (nao pula)</td>
-                                <td>Nivel de clientes</td>
-                            </tr>
-                            <tr>
-                                <td>LAG()</td>
-                                <td>Valor da linha anterior</td>
-                                <td>Variacao mensal</td>
-                            </tr>
-                            <tr>
-                                <td>LEAD()</td>
-                                <td>Valor da proxima linha</td>
-                                <td>Projecao futura</td>
-                            </tr>
-                            <tr>
-                                <td>SUM() OVER</td>
-                                <td>Soma acumulada</td>
-                                <td>Total acumulado YTD</td>
-                            </tr>
-                            <tr>
-                                <td>AVG() OVER</td>
-                                <td>Media movel</td>
-                                <td>Media movel 3 meses</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="example-box">
-                        <h4>Exemplo: Ranking de Vendedores por Regiao</h4>
-                        <div class="formula-display">SELECT
-                            vendedor,
-                            regiao,
-                            total_vendas,
-                            RANK() OVER (PARTITION BY regiao ORDER BY total_vendas DESC) as ranking_regiao,
-                            SUM(total_vendas) OVER (PARTITION BY regiao) as total_regiao,
-                            ROUND(total_vendas * 100.0 / SUM(total_vendas) OVER (PARTITION BY regiao), 2) as percentual
-                            FROM vendas_consolidadas;</div>
-                    </div>
-                </section>
-
-                <section class="content-section">
-                    <h2>Funcoes de Agregacao</h2>
-                    <div class="comparison-grid">
-                        <div class="comparison-card">
-                            <h4>COUNT</h4>
-                            <div class="formula-display">COUNT(*), COUNT(coluna), COUNT(DISTINCT coluna)</div>
+                    <details class="spoiler-box">
+                        <summary>Ver Raciocínio Lógico</summary>
+                        <div class="spoiler-content">
+                            <p>Este problema exige pensar em conjuntos. Não adianta tentar fazer tudo num WHERE simples.
+                            </p>
+                            <div class="formula-display">
+                                SELECT user_id
+                                FROM compras
+                                GROUP BY user_id
+                                HAVING
+                                SUM(CASE WHEN item = 'A' THEN 1 ELSE 0 END) > 0 -- Tem A
+                                AND
+                                SUM(CASE WHEN item = 'B' THEN 1 ELSE 0 END) > 0 -- Tem B
+                                AND
+                                SUM(CASE WHEN item = 'C' THEN 1 ELSE 0 END) = 0; -- Não tem C
+                            </div>
+                            <p>Usamos a técnica de "Aggregation Filter". Agrupamos por usuário e sinalizamos (flag) a
+                                presença de cada item.</p>
                         </div>
-                        <div class="comparison-card">
-                            <h4>SUM / AVG</h4>
-                            <div class="formula-display">SUM(valor), AVG(valor)</div>
-                        </div>
-                        <div class="comparison-card">
-                            <h4>MIN / MAX</h4>
-                            <div class="formula-display">MIN(data), MAX(preco)</div>
-                        </div>
-                        <div class="comparison-card">
-                            <h4>GROUP_CONCAT</h4>
-                            <div class="formula-display">GROUP_CONCAT(nome SEPARATOR ', ')</div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="content-section">
-                    <h2>Exercicios Praticos</h2>
-                    <div class="example-box">
-                        <h4>Exercicio 1: JOINs</h4>
-                        <p>Liste todos os clientes com suas compras. Inclua clientes sem compras (mostrando NULL).</p>
-                    </div>
-                    <div class="example-box">
-                        <h4>Exercicio 2: Agregacao</h4>
-                        <p>Calcule o total de vendas por categoria e mes, filtrando apenas categorias com mais de R$
-                            10.000.</p>
-                    </div>
-                    <div class="example-box">
-                        <h4>Exercicio 3: Window Functions</h4>
-                        <p>Crie um ranking de produtos mais vendidos por categoria e calcule a variacao percentual de
-                            vendas mes a mes.</p>
-                    </div>
-                    <div class="example-box success">
-                        <h4>Desafio</h4>
-                        <p>Crie uma analise de cohort mostrando a retencao de clientes mes a mes desde a primeira
-                            compra.</p>
-                    </div>
+                    </details>
                 </section>
 
                 <nav class="nav-bottom">

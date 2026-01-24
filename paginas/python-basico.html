@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python do Basico a Analise de Dados | DAnalise</title>
+    <title>Python Masterclass: Ciência de Dados na Prática | DAnalise</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
@@ -44,7 +44,6 @@
 </head>
 
 <body>
-    <!-- Theme Toggle Floating Button -->
     <div id="subpage-theme-toggle" class="theme-toggle"
         style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
         <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
@@ -53,217 +52,134 @@
         <a href="../index.html#avancado" class="back-link">[<] Voltar para Modulo 4 - Avancado</a>
 
                 <div class="page-title-section avancado-theme">
-                    <h1>Dominar Python do Basico a Analise de Dados</h1>
-                    <p class="subtitle">Aprenda Python do zero ate criar analises profissionais com as bibliotecas mais
-                        usadas do mercado.</p>
+                    <h1>Python Masterclass: Arquitetura de Dados e Automação</h1>
+                    <p class="subtitle">Vá além do script básico. Entenda como o Python gerencia memória, processa
+                        vetores com NumPy/Pandas e automatiza tarefas que levariam horas.</p>
                 </div>
 
+                <!-- CAPÍTULO 1: ARQUITETURA PYTHON -->
                 <section class="content-section">
-                    <h2>Por que Python para Analise de Dados?</h2>
-                    <p>Python e a linguagem mais popular para analise de dados, ciencia de dados e machine learning. Sua
-                        sintaxe simples e ecossistema rico de bibliotecas a tornam ideal para iniciantes e
-                        profissionais.</p>
+                    <h2>1. Como o Python Pensa (Interpretador vs Compilador)</h2>
+                    <p>Python é uma linguagem interpretada de alto nível. Isso significa que você escreve em inglês
+                        ("print", "if") e um tradutor em tempo real converte isso para zeros e uns.</p>
 
-                    <div class="example-box success">
-                        <h4>[+] Vantagens do Python</h4>
-                        <ul>
-                            <li>Linguagem #1 em Data Science e Machine Learning</li>
-                            <li>Sintaxe limpa e facil de aprender</li>
-                            <li>Bibliotecas poderosas (Pandas, NumPy, Scikit-learn)</li>
-                            <li>Grande comunidade e muitos recursos gratuitos</li>
-                            <li>Requisito em 70%+ das vagas de analista senior</li>
-                            <li>100% gratuito e open source</li>
-                        </ul>
+                    <h3>O Custo da Facilidade</h3>
+                    <p>Por ser interpretado, o Python puro é lento para <em>loops</em> gigantes (processar 1 bilhão de
+                        linhas num loop <code>for</code> demoraria horas). É aqui que entra a mágica das bibliotecas.
+                    </p>
+
+                    <div class="curiosity-box">
+                        <h4>💡 O Segredo do C</h4>
+                        <p>Bibliotecas como <strong>NumPy</strong> e <strong>Pandas</strong> não são escritas em Python
+                            puro. Elas são escritas em <strong>C</strong> (linguagem de baixo nível super rápida).
+                            Quando você chama <code>df.sum()</code> no Pandas, o Python apenas "aperta o botão" e o
+                            código C super-otimizado roda por baixo. É por isso que Data Science em Python é rápido: o
+                            Python é o gerente, o C é o operário.</p>
                     </div>
                 </section>
 
+                <!-- CAPÍTULO 2: PANDAS E VETORIZAÇÃO -->
                 <section class="content-section">
-                    <h2>Configurando o Ambiente</h2>
-
-                    <h3>Instalacao Recomendada</h3>
-                    <ul class="step-list">
-                        <li><strong>Anaconda:</strong> Distribuicao Python com todas bibliotecas de dados pre-instaladas
-                        </li>
-                        <li><strong>VS Code:</strong> Editor de codigo leve e poderoso (extensao Python)</li>
-                        <li><strong>Jupyter Notebook:</strong> Ambiente interativo para analise (vem com Anaconda)</li>
-                        <li><strong>Google Colab:</strong> Alternativa online gratuita, sem instalacao</li>
-                    </ul>
-
-                    <div class="formula-display"># Verificar instalacao
-                        python --version
-                        pip list | grep pandas
-
-                        # Instalar bibliotecas
-                        pip install pandas numpy matplotlib seaborn</div>
-                </section>
-
-                <section class="content-section">
-                    <h2>Fundamentos de Python</h2>
-
-                    <h3>Variaveis e Tipos de Dados</h3>
-                    <div class="formula-display"># Tipos basicos
-                        nome = "Maria" # string (texto)
-                        idade = 25 # int (inteiro)
-                        salario = 5500.50 # float (decimal)
-                        ativo = True # bool (booleano)
-
-                        # Colecoes
-                        lista = [1, 2, 3, 4, 5] # lista (mutavel)
-                        tupla = (1, 2, 3) # tupla (imutavel)
-                        dicionario = {"nome": "Maria", "idade": 25} # dict (chave-valor)
-                        conjunto = {1, 2, 3} # set (valores unicos)</div>
-
-                    <h3>Estruturas de Controle</h3>
-                    <div class="formula-display"># Condicional
-                        if idade >= 18:
-                        print("Maior de idade")
-                        elif idade >= 16:
-                        print("Pode votar")
-                        else:
-                        print("Menor de idade")
-
-                        # Loop for
-                        for i in range(5):
-                        print(i)
-
-                        # Loop com lista
-                        for item in lista:
-                        print(item)
-
-                        # List comprehension (Pythonico!)
-                        quadrados = [x**2 for x in range(10)]</div>
-
-                    <h3>Funcoes</h3>
-                    <div class="formula-display"># Funcao basica
-                        def calcular_media(valores):
-                        return sum(valores) / len(valores)
-
-                        # Com valores padrao
-                        def saudacao(nome, cumprimento="Ola"):
-                        return f"{cumprimento}, {nome}!"
-
-                        # Lambda (funcao anonima)
-                        dobro = lambda x: x * 2</div>
-                </section>
-
-                <section class="content-section">
-                    <h2>Trabalhando com Arquivos</h2>
-
-                    <div class="formula-display"># Ler arquivo texto
-                        with open("arquivo.txt", "r") as f:
-                        conteudo = f.read()
-
-                        # Escrever arquivo
-                        with open("saida.txt", "w") as f:
-                        f.write("Meu texto aqui")
-
-                        # CSV com Python puro
-                        import csv
-                        with open("dados.csv", "r") as f:
-                        reader = csv.reader(f)
-                        for linha in reader:
-                        print(linha)
-
-                        # CSV com Pandas (muito mais facil!)
-                        import pandas as pd
-                        df = pd.read_csv("dados.csv")
-                        df.to_excel("dados.xlsx", index=False)</div>
-                </section>
-
-                <section class="content-section">
-                    <h2>Bibliotecas Essenciais</h2>
-
-                    <table class="table-example">
-                        <thead>
-                            <tr>
-                                <th>Biblioteca</th>
-                                <th>Uso</th>
-                                <th>Quando Usar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Pandas</td>
-                                <td>Manipulacao de dados tabulares</td>
-                                <td>Carregar, limpar, transformar dados</td>
-                            </tr>
-                            <tr>
-                                <td>NumPy</td>
-                                <td>Computacao numerica</td>
-                                <td>Arrays, operacoes matematicas</td>
-                            </tr>
-                            <tr>
-                                <td>Matplotlib</td>
-                                <td>Visualizacao basica</td>
-                                <td>Graficos simples, personalizaveis</td>
-                            </tr>
-                            <tr>
-                                <td>Seaborn</td>
-                                <td>Visualizacao estatistica</td>
-                                <td>Graficos bonitos e rapidos</td>
-                            </tr>
-                            <tr>
-                                <td>Scikit-learn</td>
-                                <td>Machine Learning</td>
-                                <td>Modelos preditivos</td>
-                            </tr>
-                            <tr>
-                                <td>Requests</td>
-                                <td>Requisicoes HTTP</td>
-                                <td>Consumir APIs</td>
-                            </tr>
-                            <tr>
-                                <td>SQLAlchemy</td>
-                                <td>Banco de dados</td>
-                                <td>Conectar a SQL</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-
-                <section class="content-section">
-                    <h2>Jupyter Notebook</h2>
-                    <p>O Jupyter Notebook e o ambiente padrao para analise de dados. Permite combinar codigo,
-                        visualizacoes e texto em um unico documento.</p>
+                    <h2>2. Vetorização: Proibido Usar Loops</h2>
+                    <p>Em Data Science, a Regra #1 é: <strong>Nunca use 'for loop' em DataFrames</strong>. Use
+                        Vetorização.</p>
 
                     <div class="comparison-grid">
                         <div class="comparison-card">
-                            <h4>Atalhos Essenciais</h4>
-                            <ul>
-                                <li><strong>Shift + Enter:</strong> Executar celula</li>
-                                <li><strong>B:</strong> Nova celula abaixo</li>
-                                <li><strong>A:</strong> Nova celula acima</li>
-                                <li><strong>DD:</strong> Deletar celula</li>
-                                <li><strong>M:</strong> Celula Markdown</li>
-                                <li><strong>Y:</strong> Celula codigo</li>
-                            </ul>
+                            <h4>❌ O Jeito Lento (Iterativo)</h4>
+                            <div class="formula-display">
+                                for i in range(len(df)):
+                                df['total'][i] = df['preco'][i] * df['qtd'][i]
+                            </div>
+                            <p>Tempo: 10 mins (para 1M linhas). O Python processa linha por linha.</p>
                         </div>
                         <div class="comparison-card">
-                            <h4>Boas Praticas</h4>
-                            <ul>
-                                <li>Use Markdown para documentar</li>
-                                <li>Execute celulas em ordem</li>
-                                <li>Reinicie kernel periodicamente</li>
-                                <li>Exporte como HTML para compartilhar</li>
-                            </ul>
+                            <h4>✅ O Jeito Rápido (Vetorizado)</h4>
+                            <div class="formula-display">
+                                df['total'] = df['preco'] * df['qtd']
+                            </div>
+                            <p>Tempo: 0.1 segundos. A CPU processa o bloco inteiro de memória de uma vez (SIMD - Single
+                                Instruction, Multiple Data).</p>
                         </div>
                     </div>
                 </section>
 
+                <!-- CAPÍTULO 3: AUTOMAÇÃO REAL -->
                 <section class="content-section">
-                    <h2>Exercicios Praticos</h2>
-                    <div class="example-box">
-                        <h4>Exercicio 1: Fundamentos</h4>
-                        <p>Crie uma funcao que recebe uma lista de numeros e retorna: soma, media, minimo, maximo.</p>
+                    <h2>3. Case de Automação: O Fim do Trabalho Manual</h2>
+                    <p>Python brilha onde o Excel falha: tarefas repetitivas e complexas.</p>
+
+                    <div class="case-study-card">
+                        <h4>🏢 Cenário Real: Relatórios Diários de Filiais</h4>
+                        <p><strong>Problema:</strong> Você recebe 50 arquivos Excel por e-mail toda manhã (um de cada
+                            filial), precisa abrir um por um, copiar os dados para uma planilha Mestra e enviar um
+                            resumo para o diretor.</p>
+                        <p><strong>Solução Python:</strong> Um script que roda automaticamente:</p>
+                        <ol>
+                            <li>Lê a pasta onde os arquivos estão (<code>glob</code>).</li>
+                            <li>Abre todos em loop e empilha num único DataFrame (<code>pd.concat</code>).</li>
+                            <li>Faz o tratamento de dados e cálculos.</li>
+                            <li>Envia o resumo por e-mail automático (<code>smtplib</code>).</li>
+                        </ol>
+                        <p>Tempo de execução: 30 segundos. Tempo humano economizado: 2 horas/dia.</p>
                     </div>
-                    <div class="example-box">
-                        <h4>Exercicio 2: Arquivos</h4>
-                        <p>Leia um arquivo CSV de vendas e calcule o total vendido por regiao usando dicionarios.</p>
-                    </div>
+                </section>
+
+                <!-- CAPÍTULO 4: ETL COM PYTHON -->
+                <section class="content-section">
+                    <h2>4. ETL Hardcore (Extract, Transform, Load)</h2>
                     <div class="example-box success">
-                        <h4>Desafio</h4>
-                        <p>Crie um script que le dados de uma API publica, processa com Python puro e salva em CSV.</p>
+                        <h4>🛠️ Laboratório: O Script Completo de Consolidação</h4>
+                        <div class="formula-display">
+                            import pandas as pd
+                            import glob
+
+                            # 1. EXTRACT: Achar todos os arquivos .xlsx
+                            arquivos = glob.glob("vendas_*.xlsx")
+                            tabelas = []
+
+                            for arquivo in arquivos:
+                            df_temp = pd.read_excel(arquivo)
+                            # Adicionacoluna de origem para rastreio
+                            df_temp['Origem'] = arquivo
+                            tabelas.append(df_temp)
+
+                            # 2. TRANSFORM: Juntar tudo
+                            df_final = pd.concat(tabelas, ignore_index=True)
+
+                            # Limpeza: Remover linhas vazias e converter datas
+                            df_final = df_final.dropna(subset=['Venda'])
+                            df_final['Data'] = pd.to_datetime(df_final['Data'])
+
+                            # 3. LOAD: Salvar o consolidado
+                            df_final.to_excel("Consolidado_Final.xlsx", index=False)
+                            print(f"Processado {len(df_final)} linhas com sucesso!")
+                        </div>
+                        <p>Este script é o "feijão com arroz" da automação. Salve isso, você vai usar.</p>
                     </div>
+                </section>
+
+                <section class="content-section">
+                    <h2>5. Desafio: O Error Handler</h2>
+                    <p>O que acontece se um dos arquivos Excel estiver corrompido ou com senha? O script acima vai
+                        quebrar e parar tudo.</p>
+
+                    <details class="spoiler-box">
+                        <summary>Ver Solução Robusta</summary>
+                        <div class="spoiler-content">
+                            <p>Precisamos usar blocos <code>try / except</code> (tratamento de exceção).</p>
+                            <div class="formula-display">
+                                for arquivo in arquivos:
+                                try:
+                                df_temp = pd.read_excel(arquivo)
+                                tabelas.append(df_temp)
+                                except Exception as e:
+                                print(f"ERRO no arquivo {arquivo}: {e}")
+                                # O loop continua para o próximo arquivo, não trava!
+                            </div>
+                            <p>Isso diferencia um script amador de um script de produção resiliente.</p>
+                        </div>
+                    </details>
                 </section>
 
                 <nav class="nav-bottom">

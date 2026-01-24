@@ -100,4 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+    // Initialize Progress System for this module
+    if (window.initModuleProgress) {
+        window.initModuleProgress('fundacao');
+    }
 });

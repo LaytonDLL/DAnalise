@@ -585,3 +585,154 @@
     color: var(--text-primary);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
+
+/* ===== NOVOS ESTILOS PARA EXPANSÃO DE CONTEÚDO ===== */
+
+/* Curiosity Box "Você Sabia?" */
+.curiosity-box {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.05));
+    border-left: 4px solid var(--avancado);
+    padding: 1.5rem;
+    border-radius: 0 12px 12px 0;
+    margin: 2rem 0;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.curiosity-box h4 {
+    color: var(--avancado);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+[data-theme="light"] .curiosity-box {
+    background: rgba(235, 248, 255, 0.8);
+    border-color: #3498db;
+}
+
+[data-theme="light"] .curiosity-box h4 {
+    color: #2980b9;
+}
+
+/* Case Study "Cenário Real" */
+.case-study-card {
+    background: rgba(46, 204, 113, 0.05);
+    border: 1px solid rgba(46, 204, 113, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.case-study-card::before {
+    content: 'CASE REAL';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--portfolio);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 0.3rem 1rem;
+    border-radius: 0 0 0 12px;
+}
+
+.case-study-card h4 {
+    color: var(--portfolio);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+[data-theme="light"] .case-study-card {
+    background: rgba(240, 255, 244, 0.8);
+    border-color: rgba(39, 174, 96, 0.2);
+}
+
+[data-theme="light"] .case-study-card h4 {
+    color: #27ae60;
+}
+
+/* Spoiler/Solution Toggle "Ver Resposta" */
+details.spoiler-box {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin: 1rem 0;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+details.spoiler-box summary {
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-secondary);
+    list-style: none;
+    /* Remove default triangle */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    transition: background 0.3s;
+}
+
+details.spoiler-box summary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+details.spoiler-box summary::after {
+    content: '+';
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+details.spoiler-box[open] summary::after {
+    content: '-';
+}
+
+details.spoiler-box .spoiler-content {
+    padding: 1.5rem;
+    border-top: 1px solid var(--glass-border);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+[data-theme="light"] details.spoiler-box {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Armadilhas "Common Pitfalls" */
+.pitfall-box {
+    border-left: 4px solid #e74c3c;
+    background: linear-gradient(to right, rgba(231, 76, 60, 0.1), transparent);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 12px 12px 0;
+}
+
+.pitfall-box h4 {
+    color: #e74c3c;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+[data-theme="light"] .pitfall-box {
+    background: rgba(255, 235, 238, 0.7);
+}
