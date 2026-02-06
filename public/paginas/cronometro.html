@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronômetro Inteligente | DAnalise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <style>
+        /* Custom Styles for Stopwatch */
+        .stopwatch-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            min-height: 60vh;
+            position: relative;
+        }
+
+        .timer-display {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
+            color: var(--portfolio);
+            text-shadow: 0 0 30px rgba(46, 213, 115, 0.4);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timer-display::after {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle, rgba(46, 213, 115, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(20px);
+        }
+
+        .controls {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn-control {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-control:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-start {
+            background: rgba(46, 213, 115, 0.1);
+            border-color: var(--portfolio);
+            color: var(--portfolio);
+        }
+
+        .btn-start:hover {
+            background: var(--portfolio);
+            color: #000;
+            box-shadow: 0 0 30px rgba(46, 213, 115, 0.4);
+        }
+
+        .btn-stop {
+            background: rgba(255, 71, 87, 0.1);
+            border-color: var(--fundacao);
+            color: var(--fundacao);
+        }
+
+        .btn-stop:hover {
+            background: var(--fundacao);
+            color: #fff;
+            box-shadow: 0 0 30px rgba(255, 71, 87, 0.4);
+        }
+
+        .laps-container {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .lap-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-family: 'Fira Code', monospace;
+            transition: background 0.2s;
+        }
+
+        .lap-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-primary);
+        }
+
+        .lap-item:last-child {
+            border-bottom: none;
+        }
+
+        .lap-number {
+            color: var(--text-muted);
+        }
+
+        .lap-time {
+            color: var(--portfolio);
+            font-weight: 600;
+        }
+
+        /* Scanline effect for that "technical/intelligent" feel */
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(46, 213, 115, 0.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0%;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+    </style>
+    <link rel="icon" href="../assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <!-- Theme Toggle (Copied for consistency) -->
+    <div id="subpage-theme-toggle" class="theme-toggle"
+        style="position: absolute; top: 2rem; right: 2rem; z-index: 100;">
+        <img id="theme-icon-img" src="../assets/moon-white.png" alt="Alternar Tema" style="width: 20px; height: 20px;">
+    </div>
+
+    <main class="content-page">
+        <a href="../index.html" class="back-link">[<] Voltar ao Hub</a>
+
+
+
+                <section class="content-section">
+                    <div class="stopwatch-container glass-panel">
+                        <div class="scanline"></div> <!-- Visual flair -->
+
+                        <div class="timer-display" id="display">00:00:00.00</div>
+
+                        <div class="controls">
+                            <button class="btn-control btn-start" id="startBtn">Iniciar</button>
+                            <button class="btn-control btn-stop" id="stopBtn">Parar</button>
+                            <button class="btn-control" id="lapBtn">Volta</button>
+                            <button class="btn-control" id="resetBtn">Reset</button>
+                        </div>
+
+                        <div class="laps-container" id="lapsList">
+                            <!-- Laps will appear here -->
+                            <div class="lap-item"
+                                style="justify-content: center; color: var(--text-muted); font-style: italic;">
+                                Nenhuma volta registrada
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+    </main>
+
+    <script>
+        // Stopwatch Logic
+        const display = document.getElementById('display');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const lapBtn = document.getElementById('lapBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const lapsList = document.getElementById('lapsList');
+
+        let startTime = 0;
+        let elapsedTime = 0;
+        let timerInterval;
+        let isRunning = false;
+        let laps = [];
+
+        function formatTime(time) {
+            const date = new Date(time);
+            const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+            const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+            const milliseconds = String(Math.floor(date.getUTCMilliseconds() / 10)).padStart(2, '0');
+            return `${minutes}:${seconds}:${milliseconds}`;
+        }
+
+        // Extended format for hours if needed, but keeping it simple for now
+        // Actually, let's do robust formatting manually to avoid Date limitations with >24h
+        function formatTimeManual(ms) {
+            const minutes = Math.floor(ms / 60000);
+            const seconds = Math.floor((ms % 60000) / 1000);
+            const centiseconds = Math.floor((ms % 1000) / 10);
+
+            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(centiseconds).padStart(2, '0')}`;
+        }
+
+
+        function updateDisplay() {
+            const now = Date.now();
+            const time = elapsedTime + (now - startTime);
+            display.textContent = formatTimeManual(time);
+        }
+
+        function start() {
+            if (!isRunning) {
+                startTime = Date.now();
+                timerInterval = setInterval(updateDisplay, 10);
+                isRunning = true;
+                startBtn.textContent = "Pause";
+                startBtn.classList.add('active');
+
+                // Clear "No laps" message if it exists
+                if (laps.length === 0) {
+                    lapsList.innerHTML = '';
+                }
+            } else {
+                pause();
+            }
+        }
+
+        function pause() {
+            if (isRunning) {
+                clearInterval(timerInterval);
+                elapsedTime += Date.now() - startTime;
+                isRunning = false;
+                startBtn.textContent = "Continuar";
+            }
+        }
+
+        function stop() {
+            if (isRunning) {
+                pause();
+                startBtn.textContent = "Iniciar";
+            }
+        }
+
+        function reset() {
+            stop();
+            elapsedTime = 0;
+            display.textContent = "00:00:00.00";
+            laps = [];
+            renderLaps();
+            startBtn.textContent = "Iniciar";
+            lapsList.innerHTML = '<div class="lap-item" style="justify-content: center; color: var(--text-muted); font-style: italic;">Nenhuma volta registrada</div>';
+        }
+
+        function lap() {
+            if (isRunning || elapsedTime > 0) {
+                const now = isRunning ? elapsedTime + (Date.now() - startTime) : elapsedTime;
+                laps.push(now);
+                renderNewLap(now, laps.length);
+            }
+        }
+
+        function renderNewLap(time, index) {
+            const div = document.createElement('div');
+            div.className = 'lap-item';
+
+            // Calculate split time (time since last lap)
+            let splitTime = time;
+            if (index > 1) {
+                splitTime = time - laps[index - 2];
+            }
+
+            div.innerHTML = `
+                <span class="lap-number">#${String(index).padStart(2, '0')}</span>
+                <span style="color: var(--text-secondary)">+${formatTimeManual(splitTime)}</span>
+                <span class="lap-time">${formatTimeManual(time)}</span>
+             `;
+
+            // Prepend to list
+            if (laps.length === 1) lapsList.innerHTML = ''; // Clear empty message
+            lapsList.insertBefore(div, lapsList.firstChild);
+        }
+
+        function renderLaps() {
+            // Mostly for reset, currently handled by clearing innerHTML
+        }
+
+        startBtn.addEventListener('click', start);
+        stopBtn.addEventListener('click', stop);
+        resetBtn.addEventListener('click', reset);
+        lapBtn.addEventListener('click', lap);
+
+        // Basic Theme Toggle Logic (Matches subpage-script)
+        const themeToggle = document.getElementById('subpage-theme-toggle');
+        const themeIcon = document.getElementById('theme-icon-img');
+        const html = document.documentElement;
+
+        // Check saved
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.dataset.theme = savedTheme;
+        updateIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const current = html.dataset.theme;
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.dataset.theme = next;
+            localStorage.setItem('theme', next);
+            updateIcon(next);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.src = '../assets/moon-white.png';
+            } else {
+                themeIcon.src = '../assets/sun-dark.png';
+            }
+        }
+    </script>
+</body>
+
+</html>
